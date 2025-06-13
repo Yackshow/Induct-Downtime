@@ -20,14 +20,10 @@ class SlackNotifier:
     def send_notification(self, message: str, content2: str = None) -> bool:
         """Send notification to Slack workflow"""
         try:
-            # Workflow builder expects 'text' field
-            if content2:
-                full_message = f"{message}\n\n{content2}"
-            else:
-                full_message = message
-                
+            # Slack workflow builder expects 'Content' and 'Content2' fields
             payload = {
-                "text": full_message  # Changed from "Content" to "text"
+                "Content": message,
+                "Content2": content2 if content2 else ""
             }
             
             response = requests.post(
@@ -199,7 +195,7 @@ class SlackNotifier:
     def test_connection(self) -> bool:
         """Test Slack webhook connection"""
         test_message = "🧪 Test notification from Induct Downtime Monitor"
-        test_details = f"Connection test at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        test_details = f"Connection test at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\nThis tests both Content and Content2 fields for the workflow builder."
         
         return self.send_notification(test_message, test_details)
 
