@@ -18,14 +18,17 @@ class SlackNotifier:
         self.logger = logging.getLogger(__name__)
     
     def send_notification(self, message: str, content2: str = None) -> bool:
-        """Send basic notification to Slack"""
+        """Send notification to Slack workflow"""
         try:
-            payload = {
-                "Content": message
-            }
-            
+            # Workflow builder expects 'text' field
             if content2:
-                payload["Content2"] = content2
+                full_message = f"{message}\n\n{content2}"
+            else:
+                full_message = message
+                
+            payload = {
+                "text": full_message  # Changed from "Content" to "text"
+            }
             
             response = requests.post(
                 self.webhook_url,
@@ -40,6 +43,8 @@ class SlackNotifier:
             
         except requests.RequestException as e:
             self.logger.error(f"Failed to send Slack notification: {e}")
+            if hasattr(e, 'response') and e.response is not None:
+                self.logger.error(f"Response content: {e.response.text}")
             return False
         except Exception as e:
             self.logger.error(f"Unexpected error sending notification: {e}")

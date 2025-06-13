@@ -15,7 +15,7 @@ from pathlib import Path
 class DataStorage:
     """Handles data storage operations for induct downtime monitoring"""
     
-    def __init__(self, storage_type: str = "sqlite", base_path: str = "/workspace"):
+    def __init__(self, storage_type: str = "sqlite", base_path: str = "."):
         self.storage_type = storage_type.lower()
         self.base_path = Path(base_path)
         self.logger = logging.getLogger(__name__)

@@ -10,6 +10,7 @@ from datetime import datetime
 from typing import List, Dict, Optional
 import requests
 from requests.exceptions import RequestException
+from bs4 import BeautifulSoup
 
 from .auth import MidwayAuth
 
@@ -43,11 +44,8 @@ class MercuryScraper:
             response = session.get(self.mercury_url, timeout=30)
             response.raise_for_status()
             
-            # Parse JSON response
-            data = response.json()
-            
-            # Extract relevant records
-            records = self._extract_records(data)
+            # Extract from HTML
+            records = self._extract_records(response.text)
             self.logger.info(f"Extracted {len(records)} valid records")
             
             return records
@@ -59,78 +57,90 @@ class MercuryScraper:
             self.logger.error(f"Scraping error: {e}")
             return None
     
-    def _extract_records(self, data: Dict) -> List[Dict]:
-        """Extract and filter relevant records from Mercury response"""
+    def _extract_records(self, html_content: str) -> List[Dict]:
+        """Extract records from HTML table"""
         records = []
+        soup = BeautifulSoup(html_content, 'html.parser')
         
-        try:
-            # Handle different possible response structures
-            if 'data' in data:
-                raw_data = data['data']
-            elif 'results' in data:
-                raw_data = data['results']
-            elif isinstance(data, list):
-                raw_data = data
-            else:
-                raw_data = [data]
-            
-            for item in raw_data:
-                record = self._parse_record(item)
-                if record:
-                    records.append(record)
+        # Find all table rows
+        rows = soup.find_all('tr')
+        
+        if not rows:
+            self.logger.warning("No table rows found in HTML")
+            return records
+        
+        # Find header row to map column indices
+        header_row = rows[0]
+        headers = [th.text.strip() for th in header_row.find_all('th')]
+        
+        # Map column names to indices
+        column_map = {}
+        for idx, header in enumerate(headers):
+            if 'compLastScanInOrder.internalStatusCode' in header:
+                column_map['status'] = idx
+            elif header == 'trackingId':
+                column_map['tracking_id'] = idx
+            elif 'Induct.destination.id' in header:
+                column_map['location'] = idx
+            elif 'lastScanInOrder.timestamp' in header:
+                column_map['timestamp'] = idx
+        
+        # Verify we have all required columns
+        required_columns = ['status', 'tracking_id', 'location', 'timestamp']
+        missing_columns = [col for col in required_columns if col not in column_map]
+        
+        if missing_columns:
+            self.logger.error(f"Missing required columns: {missing_columns}")
+            # Fallback to hardcoded indices based on sample
+            column_map = {
+                'status': 26,      # compLastScanInOrder.internalStatusCode
+                'tracking_id': 3,  # trackingId
+                'location': 12,    # Induct.destination.id
+                'timestamp': 4     # lastScanInOrder.timestamp
+            }
+            self.logger.info(f"Using fallback column mapping: {column_map}")
+        
+        # Process data rows
+        for row in rows[1:]:  # Skip header row
+            cells = row.find_all('td')
+            if not cells or len(cells) <= max(column_map.values()):
+                continue
+                
+            try:
+                # Extract values
+                status = cells[column_map['status']].text.strip()
+                tracking_id = cells[column_map['tracking_id']].text.strip()
+                location = cells[column_map['location']].text.strip()
+                timestamp_str = cells[column_map['timestamp']].text.strip()
+                
+                # Validate required fields
+                if not all([status, tracking_id, location, timestamp_str]):
+                    continue
                     
-        except Exception as e:
-            self.logger.error(f"Error extracting records: {e}")
-            
+                # Filter by valid status and location
+                if status not in self.valid_statuses or location not in self.valid_locations:
+                    continue
+                
+                # Parse timestamp
+                parsed_timestamp = self._parse_timestamp(timestamp_str)
+                if not parsed_timestamp:
+                    continue
+                
+                records.append({
+                    'status': status,
+                    'tracking_id': tracking_id,
+                    'location': location,
+                    'timestamp': parsed_timestamp,
+                    'raw_timestamp': timestamp_str,
+                    'scraped_at': datetime.now().isoformat()
+                })
+                
+            except (IndexError, AttributeError) as e:
+                self.logger.debug(f"Error parsing row: {e}")
+                continue
+        
         return records
     
-    def _parse_record(self, item: Dict) -> Optional[Dict]:
-        """Parse individual record and extract required fields"""
-        try:
-            # Extract key fields based on roadmap specifications
-            status = self._get_nested_value(item, ['compLastScanInOrder', 'internalStatusCode'])
-            tracking_id = self._get_nested_value(item, ['trackingId'])
-            location = self._get_nested_value(item, ['Induct', 'destination', 'id'])
-            timestamp = self._get_nested_value(item, ['lastScanInOrder', 'timestamp'])
-            
-            # Validate required fields
-            if not all([status, tracking_id, location, timestamp]):
-                return None
-                
-            # Filter by valid status and location
-            if status not in self.valid_statuses or location not in self.valid_locations:
-                return None
-            
-            # Parse timestamp
-            parsed_timestamp = self._parse_timestamp(timestamp)
-            if not parsed_timestamp:
-                return None
-            
-            return {
-                'status': status,
-                'tracking_id': tracking_id,
-                'location': location,
-                'timestamp': parsed_timestamp,
-                'raw_timestamp': timestamp,
-                'scraped_at': datetime.now().isoformat()
-            }
-            
-        except Exception as e:
-            self.logger.debug(f"Error parsing record: {e}")
-            return None
-    
-    def _get_nested_value(self, data: Dict, keys: List[str]) -> Optional[str]:
-        """Safely get nested dictionary value"""
-        try:
-            current = data
-            for key in keys:
-                if isinstance(current, dict) and key in current:
-                    current = current[key]
-                else:
-                    return None
-            return str(current) if current is not None else None
-        except:
-            return None
     
     def _parse_timestamp(self, timestamp_str: str) -> Optional[datetime]:
         """Parse timestamp from various formats"""
@@ -139,11 +149,9 @@ class MercuryScraper:
             
         # Common timestamp formats to try
         formats = [
-            '%Y-%m-%dT%H:%M:%S.%fZ',
             '%Y-%m-%dT%H:%M:%SZ',
-            '%Y-%m-%d %H:%M:%S',
             '%Y-%m-%dT%H:%M:%S',
-            '%Y-%m-%d %H:%M:%S.%f'
+            '%Y-%m-%d %H:%M:%S',
         ]
         
         for fmt in formats:
@@ -151,16 +159,7 @@ class MercuryScraper:
                 return datetime.strptime(timestamp_str, fmt)
             except ValueError:
                 continue
-        
-        # Try parsing as epoch timestamp
-        try:
-            if timestamp_str.isdigit():
-                epoch = int(timestamp_str)
-                if epoch > 1000000000:  # Reasonable epoch range
-                    return datetime.fromtimestamp(epoch)
-        except:
-            pass
-            
+                
         self.logger.warning(f"Could not parse timestamp: {timestamp_str}")
         return None
     
