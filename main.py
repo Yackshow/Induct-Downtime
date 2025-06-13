@@ -5,13 +5,23 @@ Coordinates Mercury scraping, downtime analysis, and Slack notifications
 
 import os
 import sys
-import yaml
 import time
 import logging
-import schedule
 import argparse
 from datetime import datetime, time as dt_time
 from pathlib import Path
+
+try:
+    import yaml
+    YAML_AVAILABLE = True
+except ImportError:
+    YAML_AVAILABLE = False
+    
+try:
+    import schedule
+    SCHEDULE_AVAILABLE = True
+except ImportError:
+    SCHEDULE_AVAILABLE = False
 
 # Add src directory to path
 sys.path.append(str(Path(__file__).parent / "src"))
@@ -27,8 +37,7 @@ class InductDowntimeMonitor:
     
     def __init__(self, config_path: str = "config.yaml"):
         # Load configuration
-        with open(config_path, 'r') as f:
-            self.config = yaml.safe_load(f)
+        self.config = self._load_config(config_path)
         
         # Initialize components
         self.scraper = MercuryScraper(
@@ -56,6 +65,48 @@ class InductDowntimeMonitor:
         # Setup logging
         self._setup_logging()
         self.logger = logging.getLogger(__name__)
+    
+    def _load_config(self, config_path: str) -> dict:
+        """Load configuration from YAML file or use fallback"""
+        if YAML_AVAILABLE and os.path.exists(config_path):
+            try:
+                with open(config_path, 'r') as f:
+                    return yaml.safe_load(f)
+            except Exception as e:
+                self.logger.warning(f"Failed to load YAML config: {e}, using fallback")
+        
+        # Fallback configuration
+        return {
+            'mercury': {
+                'url': 'https://mercury.amazon.com/getQueryResponse?ID=127de24b92c1f65c47f001541fbc6974&region=na',
+                'scrape_interval': 120
+            },
+            'locations': {
+                'valid': ['GA1', 'GA2', 'GA3', 'GA4', 'GA5', 'GA6', 'GA7', 'GA8', 'GA9', 'GA10']
+            },
+            'downtime': {
+                'categories': [
+                    {'name': '20-60', 'min': 20, 'max': 60},
+                    {'name': '60-120', 'min': 60, 'max': 120},
+                    {'name': '120-780', 'min': 120, 'max': 780}
+                ],
+                'break_threshold': 780
+            },
+            'slack': {
+                'webhook': 'https://hooks.slack.com/triggers/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',
+                'report_interval': 1800,
+                'shift_end_threshold': 2100
+            },
+            'shift': {
+                'start': '01:20',
+                'end': '08:30',
+                'break_start': '04:55',
+                'break_end': '05:30'
+            },
+            'auth': {
+                'cookie_path': '~/.midway/cookie'
+            }
+        }
     
     def _setup_logging(self):
         """Configure logging for the application"""
@@ -207,6 +258,10 @@ class InductDowntimeMonitor:
     
     def setup_scheduler(self):
         """Setup scheduled tasks"""
+        if not SCHEDULE_AVAILABLE:
+            self.logger.warning("Schedule module not available, skipping scheduler setup")
+            return
+            
         # Scraping every 2 minutes during shift
         schedule.every(self.config['mercury']['scrape_interval']).seconds.do(self.scrape_and_analyze)
         
@@ -234,6 +289,10 @@ class InductDowntimeMonitor:
         self.setup_scheduler()
         
         try:
+            if not SCHEDULE_AVAILABLE:
+                self.logger.error("Schedule module not available for continuous mode")
+                return
+                
             while True:
                 schedule.run_pending()
                 time.sleep(10)  # Check every 10 seconds
