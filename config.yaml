@@ -1,0 +1,27 @@
+mercury:
+  url: "https://mercury.amazon.com/getQueryResponse?ID=127de24b92c1f65c47f001541fbc6974&region=na"
+  scrape_interval: 120  # seconds
+  
+locations:
+  valid: ["GA1", "GA2", "GA3", "GA4", "GA5", "GA6", "GA7", "GA8", "GA9", "GA10"]
+  
+downtime:
+  categories:
+    - {name: "20-60", min: 20, max: 60}
+    - {name: "60-120", min: 60, max: 120}  
+    - {name: "120-780", min: 120, max: 780}
+  break_threshold: 780
+  
+slack:
+  webhook: "https://hooks.slack.com/triggers/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"
+  report_interval: 1800  # 30 minutes
+  shift_end_threshold: 2100  # seconds per location
+
+shift:
+  start: "01:20"
+  end: "08:30"
+  break_start: "04:55"
+  break_end: "05:30"
+
+auth:
+  cookie_path: "~/.midway/cookie"
