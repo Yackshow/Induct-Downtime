@@ -36,11 +36,11 @@ from .auth import MidwayAuth
 class MercuryScraper:
     """Scrapes Mercury dashboard for induct station scan data"""
     
-    def __init__(self, mercury_url, valid_locations, valid_statuses):
+    def __init__(self, mercury_url, valid_locations, valid_statuses, cookie_path="~/.midway/cookie"):
         self.mercury_url = mercury_url
         self.valid_locations = set(valid_locations)
         self.valid_statuses = set(valid_statuses)
-        self.auth = MidwayAuth()
+        self.auth = MidwayAuth(cookie_path=cookie_path)
         self.session = None
         self.logger = logging.getLogger(__name__)
         
@@ -310,7 +310,8 @@ def main():
     scraper = MercuryScraper(
         mercury_url=config['mercury']['url'],
         valid_locations=config['locations']['valid'],
-        valid_statuses=['INDUCTED', 'INDUCT', 'STOW_BUFFER', 'AT_STATION']
+        valid_statuses=['INDUCTED', 'INDUCT', 'STOW_BUFFER', 'AT_STATION'],
+        cookie_path=config['auth']['cookie_path']
     )
     
     # Test scraping

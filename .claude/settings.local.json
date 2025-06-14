@@ -10,7 +10,10 @@
       "Bash(grep:*)",
       "Bash(apt:*)",
       "Bash(apt install:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)"
     ],
     "deny": []
   }

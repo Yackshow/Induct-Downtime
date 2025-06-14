@@ -24,4 +24,4 @@ shift:
   break_end: "05:30"
 
 auth:
-  cookie_path: "~/.midway/cookie"
+  cookie_path: "/home/mackhun/.midway/cookie"
