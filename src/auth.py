@@ -41,19 +41,31 @@ class MidwayAuth:
                 self.logger.error(f"Cookie file not found: {self.cookie_path}")
                 return False
                 
+            # Parse Netscape format cookie file
             with open(self.cookie_path, 'r') as f:
-                cookie_content = f.read().strip()
-                
-            # Parse cookie content (format varies)
-            if '=' in cookie_content:
-                # Simple key=value format
-                parts = cookie_content.split('=', 1)
-                if len(parts) == 2:
-                    self.session.cookies.set(parts[0], parts[1])
-            else:
-                # Treat as raw cookie value
-                self.session.cookies.set('midway_cookie', cookie_content)
-                
+                for line in f:
+                    # Skip comments and empty lines
+                    if line.startswith('#') or not line.strip():
+                        continue
+                    
+                    # Parse Netscape cookie line (7 tab-separated fields)
+                    parts = line.strip().split('\t')
+                    if len(parts) >= 7:
+                        domain = parts[0]
+                        path = parts[2]
+                        secure = parts[3]
+                        expires = parts[4]
+                        name = parts[5]
+                        value = parts[6]
+                        
+                        # Add cookie to session
+                        self.session.cookies.set(
+                            name, 
+                            value,
+                            domain=domain,
+                            path=path
+                        )
+            
             self.logger.info("Cookies loaded successfully")
             return True
             
