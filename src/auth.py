@@ -1,70 +1,74 @@
-# -*- coding: utf-8 -*-
 """
 Midway Authentication Module
 Handles Amazon Midway authentication for Mercury dashboard access
 """
 
 import os
+import csv
 import logging
 from typing import Optional
+import requests
 from requests.cookies import RequestsCookieJar
 
-# Handle requests import with urllib3 compatibility issue
+# Try to import SSPI auth (Windows) or fallback to basic auth
 try:
-    import requests
-    REQUESTS_AVAILABLE = True
-except ImportError as e:
-    print(f"Warning: Requests not available ({e})")
-    REQUESTS_AVAILABLE = False
-    # Define dummy classes for type safety
-    class requests:
-        class Session:
-            def __init__(self):
-                pass
-
+    from requests_negotiate_sspi import HttpNegotiateAuth
+    SSPI_AVAILABLE = True
+except ImportError:
+    SSPI_AVAILABLE = False
 
 class MidwayAuth:
     """Handles Midway authentication using existing cookies"""
     
     def __init__(self, cookie_path: str = "~/.midway/cookie"):
         self.cookie_path = os.path.expanduser(cookie_path)
-        if REQUESTS_AVAILABLE:
-            self.session = requests.Session()
-        else:
-            self.session = None
+        self.session = None
         self.logger = logging.getLogger(__name__)
         
     def load_cookies(self) -> bool:
-        """Load cookies from Midway cookie file"""
+        """Load cookies from Midway cookie file - matching working script format"""
         try:
             if not os.path.exists(self.cookie_path):
                 self.logger.error(f"Cookie file not found: {self.cookie_path}")
                 return False
-                
-            # Parse Netscape format cookie file
-            with open(self.cookie_path, 'r') as f:
-                for line in f:
-                    # Skip comments and empty lines
-                    if line.startswith('#') or not line.strip():
-                        continue
-                    
-                    # Parse Netscape cookie line (7 tab-separated fields)
-                    parts = line.strip().split('\t')
-                    if len(parts) >= 7:
-                        domain = parts[0]
-                        path = parts[2]
-                        secure = parts[3]
-                        expires = parts[4]
-                        name = parts[5]
-                        value = parts[6]
+            
+            # Parse cookies exactly like the working scripts
+            with open(self.cookie_path) as cf:
+                reader = list(csv.reader(cf, delimiter='\t'))
+                for row in reader:
+                    if len(row) > 2:
+                        # Handle domain
+                        if '#HttpOnly_' in row[0]:
+                            dom = row[0].split('_')[1]
+                        else:
+                            dom = row[0]
                         
-                        # Add cookie to session
-                        self.session.cookies.set(
-                            name, 
-                            value,
-                            domain=domain,
-                            path=path
-                        )
+                        # Skip comment lines
+                        if dom.startswith('#'):
+                            continue
+                        
+                        # Handle secure flag
+                        sec = False
+                        if len(row) > 3 and 'TRUE' in row[3]:
+                            sec = True
+                        
+                        # Create cookie with all fields
+                        if len(row) >= 7:
+                            required_args = {
+                                'name': row[5],
+                                'value': row[6]
+                            }
+                            
+                            optional_args = {
+                                'domain': dom,
+                                'path': row[2],
+                                'secure': sec,
+                                'expires': row[4] if len(row) > 4 else None,
+                                'discard': False,
+                            }
+                            
+                            new_cookie = requests.cookies.create_cookie(**required_args, **optional_args)
+                            self.session.cookies.set_cookie(new_cookie)
             
             self.logger.info("Cookies loaded successfully")
             return True
@@ -75,23 +79,34 @@ class MidwayAuth:
     
     def get_authenticated_session(self) -> Optional[requests.Session]:
         """Get authenticated session for Mercury requests"""
-        if not REQUESTS_AVAILABLE:
-            self.logger.error("Requests library not available due to urllib3/OpenSSL compatibility issue")
-            return None
+        if not self.session:
+            # Create session with retry adapter
+            adapter = requests.adapters.HTTPAdapter(max_retries=5)
+            self.session = requests.Session()
+            self.session.mount('https://', adapter)
             
-        if not self.load_cookies():
-            return None
+            # Load cookies
+            if not self.load_cookies():
+                return None
             
-        # Set headers that Mercury expects
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-        })
+            # Set headers that Mercury expects (from working scripts)
+            self.session.headers = {
+                "Accept": "application/json",
+                "User-Agent": "AmzBot/1.0"
+            }
+            
+            # Disable SSL verification for internal Mercury
+            self.session.verify = False
+            self.session.allow_redirects = False
+            
+            # Add SSPI auth if available (Windows)
+            if SSPI_AVAILABLE:
+                self.session.auth = HttpNegotiateAuth()
+                self.logger.info("Using SSPI/Kerberos authentication")
+            
+            # Disable SSL warnings
+            import urllib3
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         
         return self.session
     
@@ -102,7 +117,7 @@ class MidwayAuth:
             return False
             
         try:
-            response = session.get(test_url, timeout=30)
+            response = session.get(test_url, timeout=30, verify=False)
             if response.status_code == 200:
                 self.logger.info("Authentication test successful")
                 return True
