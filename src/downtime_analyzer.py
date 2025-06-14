@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Downtime Analysis Engine
 Calculates downtime between consecutive package scans at induct stations
@@ -5,8 +6,8 @@ Calculates downtime between consecutive package scans at induct stations
 
 import logging
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Tuple
 from collections import defaultdict
+from typing import List, Dict, Optional, Any
 
 
 class DowntimeAnalyzer:
@@ -23,7 +24,7 @@ class DowntimeAnalyzer:
         })
         self.logger = logging.getLogger(__name__)
     
-    def process_scans(self, scans: List[Dict]) -> Dict:
+    def process_scans(self, scans: List[Dict]) -> Dict[str, Any]:
         """Process new scans and calculate downtimes"""
         new_downtimes = []
         
@@ -121,7 +122,7 @@ class DowntimeAnalyzer:
         else:
             return f">{self.categories[-1]['max']}"
     
-    def _get_location_summaries(self) -> Dict:
+    def _get_location_summaries(self) -> Dict[str, Dict]:
         """Get summary statistics for all locations"""
         summaries = {}
         
@@ -164,7 +165,7 @@ class DowntimeAnalyzer:
         
         return alerts
     
-    def reset_shift_data(self):
+    def reset_shift_data(self) -> None:
         """Reset tracking data for new shift"""
         self.logger.info("Resetting shift data")
         for location in self.location_trackers:
@@ -175,7 +176,7 @@ class DowntimeAnalyzer:
                 'category_counts': defaultdict(int)
             }
     
-    def get_statistics(self) -> Dict:
+    def get_statistics(self) -> Dict[str, Any]:
         """Get comprehensive statistics"""
         total_events = sum(len(tracker['downtimes']) for tracker in self.location_trackers.values())
         total_downtime = sum(tracker['total_downtime'] for tracker in self.location_trackers.values())

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Induct Downtime Monitoring System - Main Orchestrator
 Coordinates Mercury scraping, downtime analysis, and Slack notifications
@@ -10,6 +11,7 @@ import logging
 import argparse
 from datetime import datetime, time as dt_time
 from pathlib import Path
+from typing import Optional
 
 try:
     import yaml
@@ -124,7 +126,7 @@ class InductDowntimeMonitor:
             ]
         )
     
-    def is_shift_active(self) -> bool:
+    def is_shift_active(self):
         """Check if shift is currently active"""
         current_time = datetime.now().time()
         shift_start = dt_time.fromisoformat(self.config['shift']['start'])
@@ -136,7 +138,7 @@ class InductDowntimeMonitor:
         else:
             return shift_start <= current_time <= shift_end
     
-    def is_break_time(self) -> bool:
+    def is_break_time(self):
         """Check if it's currently break time"""
         current_time = datetime.now().time()
         break_start = dt_time.fromisoformat(self.config['shift']['break_start'])
@@ -384,7 +386,7 @@ def main():
             print("Use --test, --continuous, or --single")
             print("For help: python main.py --help")
             
-    except FileNotFoundError:
+    except IOError:
         print(f"❌ Configuration file not found: {args.config}")
     except Exception as e:
         print(f"❌ System startup failed: {e}")

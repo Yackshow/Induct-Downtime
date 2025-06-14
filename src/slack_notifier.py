@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Slack Notification Module
 Sends formatted notifications to Slack webhook for downtime monitoring
@@ -5,9 +6,16 @@ Sends formatted notifications to Slack webhook for downtime monitoring
 
 import json
 import logging
-import requests
 from datetime import datetime
 from typing import List, Dict, Optional
+
+# Handle requests import with urllib3 compatibility issue
+try:
+    import requests
+    REQUESTS_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Requests not available ({e})")
+    REQUESTS_AVAILABLE = False
 
 
 class SlackNotifier:
@@ -19,6 +27,13 @@ class SlackNotifier:
     
     def send_notification(self, message: str, content2: str = None) -> bool:
         """Send notification to Slack workflow"""
+        if not REQUESTS_AVAILABLE:
+            self.logger.warning("Requests library not available - cannot send Slack notification")
+            print(f"[MOCK SLACK] {message}")
+            if content2:
+                print(f"[MOCK SLACK DETAILS] {content2}")
+            return False
+            
         try:
             # Slack workflow builder expects 'Content' and 'Content2' fields
             payload = {
@@ -34,24 +49,24 @@ class SlackNotifier:
             )
             
             response.raise_for_status()
-            self.logger.info(f"Slack notification sent successfully")
+            self.logger.info("Slack notification sent successfully")
             return True
             
         except requests.RequestException as e:
-            self.logger.error(f"Failed to send Slack notification: {e}")
+            self.logger.error("Failed to send Slack notification: {}".format(e))
             if hasattr(e, 'response') and e.response is not None:
-                self.logger.error(f"Response content: {e.response.text}")
+                self.logger.error("Response content: {}".format(e.response.text))
             return False
         except Exception as e:
-            self.logger.error(f"Unexpected error sending notification: {e}")
+            self.logger.error("Unexpected error sending notification: {}".format(e))
             return False
     
-    def send_30_minute_report(self, location_summaries: Dict, timestamp: str = None) -> bool:
+    def send_30_minute_report(self, location_summaries, timestamp=None):
         """Send 30-minute downtime report"""
         if not timestamp:
             timestamp = datetime.now().strftime("%I:%M %p")
         
-        title = f"📊 Induct Downtime Report - {timestamp}"
+        title = "📊 Induct Downtime Report - {}".format(timestamp)
         
         # Build report content
         report_lines = []
@@ -69,16 +84,16 @@ class SlackNotifier:
             # Format category breakdown
             categories = []
             if category_counts.get('20-60', 0) > 0:
-                categories.append(f"20-60: {category_counts['20-60']}")
+                categories.append("20-60: {}".format(category_counts['20-60']))
             if category_counts.get('60-120', 0) > 0:
-                categories.append(f"60-120: {category_counts['60-120']}")
+                categories.append("60-120: {}".format(category_counts['60-120']))
             if category_counts.get('120-780', 0) > 0:
-                categories.append(f"120-780: {category_counts['120-780']}")
+                categories.append("120-780: {}".format(category_counts['120-780']))
             
-            category_str = f"({', '.join(categories)})" if categories else ""
+            category_str = "({})".format(', '.join(categories)) if categories else ""
             
             report_lines.append(
-                f"{location}: {event_count} events {category_str} Total: {total_time}s"
+                "{}: {} events {} Total: {}s".format(location, event_count, category_str, total_time)
             )
             
             total_events += event_count
@@ -88,20 +103,20 @@ class SlackNotifier:
             content2 = "✅ No significant downtime events in the last 30 minutes"
         else:
             content2 = "\n".join(report_lines)
-            content2 += f"\n\n📈 Summary: {total_events} total events, {total_downtime}s total downtime"
+            content2 += "\n\n📈 Summary: {} total events, {}s total downtime".format(total_events, total_downtime)
         
         return self.send_notification(title, content2)
     
-    def send_shift_end_alert(self, alerts: List[Dict]) -> bool:
+    def send_shift_end_alert(self, alerts):
         """Send shift-end excessive downtime alerts"""
         if not alerts:
             return True
         
         for alert in alerts:
-            title = f"🚨 Shift End Alert - {alert['location']} Excessive Downtime"
+            title = "🚨 Shift End Alert - {} Excessive Downtime".format(alert['location'])
             content2 = (
-                f"{alert['location']} has exceeded {alert['threshold']} seconds of downtime\n"
-                f"Current: {alert['total_downtime']:,}s ({alert['event_count']} events)"
+                "{} has exceeded {} seconds of downtime\n".format(alert['location'], alert['threshold']) +
+                "Current: {:,}s ({} events)".format(alert['total_downtime'], alert['event_count'])
             )
             
             success = self.send_notification(title, content2)
@@ -110,7 +125,7 @@ class SlackNotifier:
         
         return True
     
-    def send_system_alert(self, alert_type: str, message: str, details: str = None) -> bool:
+    def send_system_alert(self, alert_type, message, details=None):
         """Send system-level alerts (errors, warnings, etc.)"""
         icons = {
             'error': '❌',
@@ -120,30 +135,30 @@ class SlackNotifier:
         }
         
         icon = icons.get(alert_type.lower(), '🔔')
-        title = f"{icon} System Alert - {message}"
+        title = "{} System Alert - {}".format(icon, message)
         
         return self.send_notification(title, details)
     
-    def send_downtime_alert(self, event: Dict) -> bool:
+    def send_downtime_alert(self, event):
         """Send immediate alert for significant downtime events"""
         # Only alert for longer downtimes (>120s)
         if event['downtime_seconds'] < 120:
             return True
         
-        title = f"⏰ Significant Downtime - {event['location']}"
+        title = "⏰ Significant Downtime - {}".format(event['location'])
         content2 = (
-            f"Location: {event['location']}\n"
-            f"Duration: {event['downtime_seconds']}s ({event['category']})\n"
-            f"From: {event['start_status']} → {event['end_status']}\n"
-            f"Time: {event['start_timestamp'].strftime('%H:%M:%S')} - "
-            f"{event['end_timestamp'].strftime('%H:%M:%S')}"
+            "Location: {}\n".format(event['location']) +
+            "Duration: {}s ({})\n".format(event['downtime_seconds'], event['category']) +
+            "From: {} → {}\n".format(event['start_status'], event['end_status']) +
+            "Time: {} - ".format(event['start_timestamp'].strftime('%H:%M:%S')) +
+            "{}".format(event['end_timestamp'].strftime('%H:%M:%S'))
         )
         
         return self.send_notification(title, content2)
     
-    def send_shift_summary(self, location_summaries: Dict, shift_start: str, shift_end: str) -> bool:
+    def send_shift_summary(self, location_summaries, shift_start, shift_end):
         """Send end-of-shift summary report"""
-        title = f"📋 Shift Summary Report ({shift_start} - {shift_end})"
+        title = "📋 Shift Summary Report ({} - {})".format(shift_start, shift_end)
         
         # Calculate totals
         total_events = sum(s['event_count'] for s in location_summaries.values())
@@ -152,13 +167,13 @@ class SlackNotifier:
         
         # Build detailed report
         report_lines = [
-            f"🎯 Shift Overview:",
-            f"  • Total downtime events: {total_events}",
-            f"  • Total downtime: {total_downtime:,}s ({total_downtime/60:.1f} minutes)",
-            f"  • Active locations: {active_locations}/10",
-            f"  • Average per location: {total_downtime/10:.0f}s",
+            "🎯 Shift Overview:",
+            "  • Total downtime events: {}".format(total_events),
+            "  • Total downtime: {:,}s ({:.1f} minutes)".format(total_downtime, total_downtime/60),
+            "  • Active locations: {}/10".format(active_locations),
+            "  • Average per location: {:.0f}s".format(total_downtime/10),
             "",
-            f"📊 Location Breakdown:"
+            "📊 Location Breakdown:"
         ]
         
         # Sort locations by total downtime (worst first)
@@ -176,8 +191,8 @@ class SlackNotifier:
             category_counts = summary.get('category_counts', {})
             
             report_lines.append(
-                f"  • {location}: {summary['total_downtime']:,}s "
-                f"({summary['event_count']} events, avg: {avg_downtime}s)"
+                "  • {}: {:,}s ".format(location, summary['total_downtime']) +
+                "({} events, avg: {}s)".format(summary['event_count'], avg_downtime)
             )
             
             # Add category breakdown for locations with many events
@@ -185,17 +200,17 @@ class SlackNotifier:
                 categories = []
                 for cat, count in category_counts.items():
                     if count > 0:
-                        categories.append(f"{cat}: {count}")
+                        categories.append("{}: {}".format(cat, count))
                 if categories:
-                    report_lines.append(f"    └ {', '.join(categories)}")
+                    report_lines.append("    └ {}".format(', '.join(categories)))
         
         content2 = "\n".join(report_lines)
         return self.send_notification(title, content2)
     
-    def test_connection(self) -> bool:
+    def test_connection(self):
         """Test Slack webhook connection"""
         test_message = "🧪 Test notification from Induct Downtime Monitor"
-        test_details = f"Connection test at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\nThis tests both Content and Content2 fields for the workflow builder."
+        test_details = "Connection test at {}\n\nThis tests both Content and Content2 fields for the workflow builder.".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         
         return self.send_notification(test_message, test_details)
 

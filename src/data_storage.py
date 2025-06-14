@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Data Storage Module
 Handles both SQLite database and CSV file storage for induct downtime data
@@ -8,8 +9,8 @@ import csv
 import sqlite3
 import logging
 from datetime import datetime, date, timedelta
-from typing import List, Dict, Optional
 from pathlib import Path
+from typing import List, Dict, Optional
 
 
 class DataStorage:
@@ -17,15 +18,18 @@ class DataStorage:
     
     def __init__(self, storage_type: str = "sqlite", base_path: str = "."):
         self.storage_type = storage_type.lower()
-        self.base_path = Path(base_path)
+        self.base_path = base_path
         self.logger = logging.getLogger(__name__)
         
         # Ensure directories exist
-        (self.base_path / "data" / "raw").mkdir(parents=True, exist_ok=True)
-        (self.base_path / "data" / "analysis").mkdir(parents=True, exist_ok=True)
+        base_path = Path(self.base_path)
+        raw_dir = base_path / "data" / "raw"
+        analysis_dir = base_path / "data" / "analysis"
+        raw_dir.mkdir(parents=True, exist_ok=True)
+        analysis_dir.mkdir(parents=True, exist_ok=True)
         
         if self.storage_type == "sqlite":
-            self.db_path = self.base_path / "induct_downtime.db"
+            self.db_path = str(Path(self.base_path) / "induct_downtime.db")
             self._init_database()
     
     def _init_database(self):
@@ -140,10 +144,10 @@ class DataStorage:
         """Store scans in CSV files"""
         try:
             today = date.today().strftime('%Y-%m-%d')
-            csv_path = self.base_path / "data" / "raw" / f"induct_raw_{today}.csv"
+            csv_path = Path(self.base_path) / "data" / "raw" / f"induct_raw_{today}.csv"
             
             # Check if file exists to determine if we need headers
-            file_exists = csv_path.exists()
+            file_exists = os.path.exists(csv_path)
             
             with open(csv_path, 'a', newline='') as csvfile:
                 fieldnames = ['tracking_id', 'location', 'status', 'timestamp', 'raw_timestamp', 'scraped_at']
@@ -212,9 +216,9 @@ class DataStorage:
         """Store downtime events in CSV"""
         try:
             today = date.today().strftime('%Y-%m-%d')
-            csv_path = self.base_path / "data" / "analysis" / f"downtime_analysis_{today}.csv"
+            csv_path = Path(self.base_path) / "data" / "analysis" / f"downtime_analysis_{today}.csv"
             
-            file_exists = csv_path.exists()
+            file_exists = os.path.exists(csv_path)
             
             with open(csv_path, 'a', newline='') as csvfile:
                 fieldnames = ['location', 'downtime_seconds', 'category', 'start_timestamp', 
@@ -234,7 +238,7 @@ class DataStorage:
             self.logger.error(f"CSV event storage error: {e}")
             return False
     
-    def get_recent_scans(self, location: str = None, hours: int = 1) -> List[Dict]:
+    def get_recent_scans(self, location: Optional[str] = None, hours: int = 1) -> List[Dict]:
         """Get recent scans from storage"""
         try:
             if self.storage_type == "sqlite":
@@ -245,17 +249,17 @@ class DataStorage:
             self.logger.error(f"Failed to get recent scans: {e}")
             return []
     
-    def _get_recent_scans_sqlite(self, location: str = None, hours: int = 1) -> List[Dict]:
+    def _get_recent_scans_sqlite(self, location: Optional[str] = None, hours: int = 1) -> List[Dict]:
         """Get recent scans from SQLite"""
         try:
             with sqlite3.connect(self.db_path) as conn:
                 conn.row_factory = sqlite3.Row
                 cursor = conn.cursor()
                 
-                query = '''
+                query = f'''
                     SELECT * FROM raw_scans 
-                    WHERE timestamp > datetime('now', '-{} hours')
-                '''.format(hours)
+                    WHERE timestamp > datetime('now', '-{hours} hours')
+                '''
                 
                 if location:
                     query += ' AND location = ?'
@@ -270,13 +274,13 @@ class DataStorage:
             self.logger.error(f"SQLite query error: {e}")
             return []
     
-    def _get_recent_scans_csv(self, location: str = None, hours: int = 1) -> List[Dict]:
+    def _get_recent_scans_csv(self, location: Optional[str] = None, hours: int = 1) -> List[Dict]:
         """Get recent scans from CSV files"""
         # For CSV, we'll read today's file
         today = date.today().strftime('%Y-%m-%d')
-        csv_path = self.base_path / "data" / "raw" / f"induct_raw_{today}.csv"
+        csv_path = Path(self.base_path) / "data" / "raw" / f"induct_raw_{today}.csv"
         
-        if not csv_path.exists():
+        if not os.path.exists(csv_path):
             return []
         
         try:
@@ -309,7 +313,7 @@ class DataStorage:
             self.logger.error(f"CSV query error: {e}")
             return []
     
-    def store_daily_summary(self, date_str: str, location_summaries: Dict) -> bool:
+    def store_daily_summary(self, date_str: str, location_summaries: Dict[str, Dict]) -> bool:
         """Store daily summary statistics"""
         try:
             if self.storage_type == "sqlite":
@@ -320,7 +324,7 @@ class DataStorage:
             self.logger.error(f"Failed to store daily summary: {e}")
             return False
     
-    def _store_summary_sqlite(self, date_str: str, location_summaries: Dict) -> bool:
+    def _store_summary_sqlite(self, date_str: str, location_summaries: Dict[str, Dict]) -> bool:
         """Store daily summary in SQLite"""
         try:
             with sqlite3.connect(self.db_path) as conn:
@@ -354,10 +358,10 @@ class DataStorage:
             self.logger.error(f"SQLite summary storage error: {e}")
             return False
     
-    def _store_summary_csv(self, date_str: str, location_summaries: Dict) -> bool:
+    def _store_summary_csv(self, date_str: str, location_summaries: Dict[str, Dict]) -> bool:
         """Store daily summary in CSV"""
         try:
-            csv_path = self.base_path / "data" / "analysis" / f"daily_summary_{date_str}.csv"
+            csv_path = Path(self.base_path) / "data" / "analysis" / f"daily_summary_{date_str}.csv"
             
             with open(csv_path, 'w', newline='') as csvfile:
                 fieldnames = ['location', 'total_downtime', 'event_count', 'category_20_60',

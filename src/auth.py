@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Midway Authentication Module
 Handles Amazon Midway authentication for Mercury dashboard access
@@ -5,9 +6,21 @@ Handles Amazon Midway authentication for Mercury dashboard access
 
 import os
 import logging
-from typing import Optional, Dict
-import requests
+from typing import Optional
 from requests.cookies import RequestsCookieJar
+
+# Handle requests import with urllib3 compatibility issue
+try:
+    import requests
+    REQUESTS_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Requests not available ({e})")
+    REQUESTS_AVAILABLE = False
+    # Define dummy classes for type safety
+    class requests:
+        class Session:
+            def __init__(self):
+                pass
 
 
 class MidwayAuth:
@@ -15,7 +28,10 @@ class MidwayAuth:
     
     def __init__(self, cookie_path: str = "~/.midway/cookie"):
         self.cookie_path = os.path.expanduser(cookie_path)
-        self.session = requests.Session()
+        if REQUESTS_AVAILABLE:
+            self.session = requests.Session()
+        else:
+            self.session = None
         self.logger = logging.getLogger(__name__)
         
     def load_cookies(self) -> bool:
@@ -47,6 +63,10 @@ class MidwayAuth:
     
     def get_authenticated_session(self) -> Optional[requests.Session]:
         """Get authenticated session for Mercury requests"""
+        if not REQUESTS_AVAILABLE:
+            self.logger.error("Requests library not available due to urllib3/OpenSSL compatibility issue")
+            return None
+            
         if not self.load_cookies():
             return None
             

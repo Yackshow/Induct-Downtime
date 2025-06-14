@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Offline Mock Data Test Script for Induct Downtime Monitoring System
 Tests core logic without external dependencies (no requests, pandas, etc.)
