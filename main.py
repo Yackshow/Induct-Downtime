@@ -45,7 +45,7 @@ class InductDowntimeMonitor:
         self.scraper = MercuryScraper(
             mercury_url=self.config['mercury']['url'],
             valid_locations=self.config['locations']['valid'],
-            valid_statuses=['INDUCTED', 'INDUCT', 'STOW_BUFFER', 'AT_STATION'],
+            valid_statuses=self.config['statuses']['valid'],
             cookie_path=self.config['auth']['cookie_path']
         )
         

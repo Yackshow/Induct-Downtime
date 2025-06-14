@@ -11,14 +11,15 @@ Monitor warehouse induct station downtime to identify operational bottlenecks an
 - Only track INDUCTED/INDUCT/STOW_BUFFER/AT_STATION statuses
 
 ## Technical Stack
-- Python 3.8+
-- Selenium for Mercury scraping
+- Python 3.7 (specific version used in dev environment)
+- Requests for Mercury API access (no Selenium needed)
 - SQLite/CSV for data storage
 - Requests for Slack webhooks
 - Schedule for periodic tasks
 
 ## Authentication
 Uses Amazon Midway authentication via mwinit -o command.
+
 Cookie location: ~/.midway/cookie
 
 ## Shift Information

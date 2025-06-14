@@ -1,0 +1,57 @@
+{
+  "total_records": 1000,
+  "filtered_records": 10,
+  "status_breakdown": {
+    "DELIVERED": 148,
+    "ON_ROAD_WITH_DELIVERY_ASSOCIATE": 10,
+    "READY_FOR_DEPARTURE": 832,
+    "AT_STATION": 10
+  },
+  "location_breakdown": {
+    "GA6": 156,
+    "GA1": 841,
+    "GA8": 3
+  },
+  "ga_locations_found": [
+    "GA6",
+    "GA1",
+    "GA8"
+  ],
+  "sample_records": [
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498053959009",
+      "location": "GA6",
+      "timestamp_str": "2025-06-14T08:35:09Z",
+      "row_number": 1
+    },
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498199730009",
+      "location": "GA6",
+      "timestamp_str": "2025-06-14T07:54:43Z",
+      "row_number": 2
+    },
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498168775009",
+      "location": "GA6",
+      "timestamp_str": "2025-06-14T08:07:38Z",
+      "row_number": 3
+    },
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498260456009",
+      "location": "GA6",
+      "timestamp_str": "2025-06-14T08:51:12Z",
+      "row_number": 4
+    },
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498101748009",
+      "location": "GA6",
+      "timestamp_str": "2025-06-14T09:12:10Z",
+      "row_number": 5
+    }
+  ]
+}

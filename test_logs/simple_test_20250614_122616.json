@@ -1,0 +1,58 @@
+{
+  "timestamp": "20250614_122616",
+  "original_filter_count": 4,
+  "expanded_filter_count": 1000,
+  "difference": 996,
+  "original_sample": [
+    {
+      "status": "AT_STATION",
+      "tracking_id": "TBC497312479009",
+      "location": "GA1",
+      "timestamp": "2025-06-14 09:58:45",
+      "raw_timestamp": "2025-06-14T09:58:45Z",
+      "scraped_at": "2025-06-14T12:26:22.275513"
+    },
+    {
+      "status": "AT_STATION",
+      "tracking_id": "TBC498367573009",
+      "location": "GA1",
+      "timestamp": "2025-06-14 12:23:12",
+      "raw_timestamp": "2025-06-14T12:23:12Z",
+      "scraped_at": "2025-06-14T12:26:22.288517"
+    },
+    {
+      "status": "AT_STATION",
+      "tracking_id": "TBC498113982009",
+      "location": "GA1",
+      "timestamp": "2025-06-14 11:49:04",
+      "raw_timestamp": "2025-06-14T11:49:04Z",
+      "scraped_at": "2025-06-14T12:26:22.300437"
+    }
+  ],
+  "expanded_sample": [
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498168775009",
+      "location": "GA6",
+      "timestamp": "2025-06-14 08:07:38",
+      "raw_timestamp": "2025-06-14T08:07:38Z",
+      "scraped_at": "2025-06-14T12:26:27.561685"
+    },
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498199730009",
+      "location": "GA6",
+      "timestamp": "2025-06-14 07:54:43",
+      "raw_timestamp": "2025-06-14T07:54:43Z",
+      "scraped_at": "2025-06-14T12:26:27.561774"
+    },
+    {
+      "status": "DELIVERED",
+      "tracking_id": "TBC498053959009",
+      "location": "GA6",
+      "timestamp": "2025-06-14 08:35:09",
+      "raw_timestamp": "2025-06-14T08:35:09Z",
+      "scraped_at": "2025-06-14T12:26:27.561839"
+    }
+  ]
+}

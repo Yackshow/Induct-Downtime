@@ -1,0 +1,10 @@
+# Update these lines in config.yaml:
+
+shift:
+  start: "05:20"      # 1:20 AM EDT = 5:20 AM UTC
+  end: "12:30"        # 8:30 AM EDT = 12:30 PM UTC  
+  break_start: "08:55"  # 4:55 AM EDT = 8:55 AM UTC
+  break_end: "09:30"    # 5:30 AM EDT = 9:30 AM UTC
+  
+# Note: These times are for EDT (summer time)
+# For EST (winter), add 1 hour to each time

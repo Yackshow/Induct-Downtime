@@ -5,6 +5,14 @@ mercury:
 locations:
   valid: ["GA1", "GA2", "GA3", "GA4", "GA5", "GA6", "GA7", "GA8", "GA9", "GA10"]
   
+# Updated statuses based on actual Mercury data analysis
+statuses:
+  # Current filter (only 10 packages):
+  # valid: ["INDUCTED", "INDUCT", "STOW_BUFFER", "AT_STATION"]
+  
+  # Expanded filter to include packages that passed through induct (990 more packages):
+  valid: ["INDUCTED", "INDUCT", "STOW_BUFFER", "AT_STATION", "READY_FOR_DEPARTURE", "DELIVERED", "ON_ROAD_WITH_DELIVERY_ASSOCIATE"]
+  
 downtime:
   categories:
     - {name: "20-60", min: 20, max: 60}
@@ -18,10 +26,10 @@ slack:
   shift_end_threshold: 2100  # seconds per location
 
 shift:
-  start: "01:20"
-  end: "08:30"
-  break_start: "04:55"
-  break_end: "05:30"
+  start: "05:20"      # 1:20 AM EDT (Toronto) = 5:20 AM UTC
+  end: "12:30"        # 8:30 AM EDT (Toronto) = 12:30 PM UTC
+  break_start: "08:55"  # 4:55 AM EDT = 8:55 AM UTC
+  break_end: "09:30"    # 5:30 AM EDT = 9:30 AM UTC
 
 auth:
   cookie_path: "/home/mackhun/.midway/cookie"

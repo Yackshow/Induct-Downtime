@@ -10,12 +10,23 @@ from typing import Optional
 import requests
 from requests.cookies import RequestsCookieJar
 
-# Try to import SSPI auth (Windows) or fallback to basic auth
+# Suppress authentication warnings
+logging.getLogger('requests_kerberos').setLevel(logging.ERROR)
+logging.getLogger('spnego').setLevel(logging.ERROR)
+logging.getLogger('gssapi').setLevel(logging.ERROR)
+
+# Try to import SSPI auth (Windows) or Kerberos auth (Linux)
 try:
     from requests_negotiate_sspi import HttpNegotiateAuth
     SSPI_AVAILABLE = True
 except ImportError:
     SSPI_AVAILABLE = False
+    # Try Kerberos auth for Linux
+    try:
+        from requests_kerberos import HTTPKerberosAuth, OPTIONAL
+        KERBEROS_AVAILABLE = True
+    except ImportError:
+        KERBEROS_AVAILABLE = False
 
 class MidwayAuth:
     """Handles Midway authentication using existing cookies"""
@@ -28,12 +39,13 @@ class MidwayAuth:
     def load_cookies(self) -> bool:
         """Load cookies from Midway cookie file - matching working script format"""
         try:
-            if not os.path.exists(self.cookie_path):
-                self.logger.error(f"Cookie file not found: {self.cookie_path}")
+            cookiefile = os.path.join(os.path.expanduser("~"), ".midway", "cookie")
+            
+            if not os.path.exists(cookiefile):
+                self.logger.error(f"Cookie file not found: {cookiefile}")
                 return False
             
-            # Parse cookies exactly like the working scripts
-            with open(self.cookie_path) as cf:
+            with open(cookiefile) as cf:
                 reader = list(csv.reader(cf, delimiter='\t'))
                 for row in reader:
                     if len(row) > 2:
@@ -43,32 +55,26 @@ class MidwayAuth:
                         else:
                             dom = row[0]
                         
-                        # Skip comment lines
-                        if dom.startswith('#'):
-                            continue
-                        
                         # Handle secure flag
                         sec = False
-                        if len(row) > 3 and 'TRUE' in row[3]:
+                        if 'TRUE' in row[3]:
                             sec = True
                         
-                        # Create cookie with all fields
-                        if len(row) >= 7:
-                            required_args = {
-                                'name': row[5],
-                                'value': row[6]
-                            }
-                            
-                            optional_args = {
-                                'domain': dom,
-                                'path': row[2],
-                                'secure': sec,
-                                'expires': row[4] if len(row) > 4 else None,
-                                'discard': False,
-                            }
-                            
-                            new_cookie = requests.cookies.create_cookie(**required_args, **optional_args)
-                            self.session.cookies.set_cookie(new_cookie)
+                        required_args = {
+                            'name': row[5],
+                            'value': row[6]
+                        }
+                        
+                        optional_args = {
+                            'domain': dom,
+                            'path': row[2],
+                            'secure': sec,
+                            'expires': row[4],
+                            'discard': False,
+                        }
+                        
+                        new_cookie = requests.cookies.create_cookie(**required_args, **optional_args)
+                        self.session.cookies.set_cookie(new_cookie)
             
             self.logger.info("Cookies loaded successfully")
             return True
@@ -79,34 +85,53 @@ class MidwayAuth:
     
     def get_authenticated_session(self) -> Optional[requests.Session]:
         """Get authenticated session for Mercury requests"""
-        if not self.session:
-            # Create session with retry adapter
-            adapter = requests.adapters.HTTPAdapter(max_retries=5)
-            self.session = requests.Session()
-            self.session.mount('https://', adapter)
-            
-            # Load cookies
-            if not self.load_cookies():
+        if self.session is not None:
+            self.session.close()
+        
+        # Create session with retry adapter
+        adapter = requests.adapters.HTTPAdapter(max_retries=5)
+        self.session = requests.Session()
+        self.session.mount('https://', adapter)
+        
+        # Set headers BEFORE loading cookies (critical order)
+        self.session.headers = {
+            "Accept": "application/json",
+            "User-Agent": "AmzBot/1.0"
+        }
+        
+        # Disable SSL verification for internal Mercury
+        self.session.verify = False
+        self.session.allow_redirects = False
+        
+        # Load cookies
+        if not self.load_cookies():
+            return None
+        
+        # Add SSPI auth if available (Windows)
+        if SSPI_AVAILABLE:
+            self.session.auth = HttpNegotiateAuth()
+            self.logger.info("Using SSPI/Kerberos authentication")
+        elif 'KERBEROS_AVAILABLE' in globals() and KERBEROS_AVAILABLE:
+            # Suppress Kerberos warnings when using Midway cookies
+            import logging
+            logging.getLogger('requests_kerberos').setLevel(logging.WARNING)
+            self.session.auth = HTTPKerberosAuth(mutual_authentication=OPTIONAL)
+            self.logger.info("Using Kerberos authentication")
+        
+        # Make initial request to establish session
+        try:
+            response = self.session.get('https://logistics.amazon.com/station/dashboard/ageing')
+            # Check if we got redirected to login page
+            if response.status_code == 302 or 'login' in response.url.lower():
+                self.logger.error("Authentication failed - redirected to login page")
                 return None
-            
-            # Set headers that Mercury expects (from working scripts)
-            self.session.headers = {
-                "Accept": "application/json",
-                "User-Agent": "AmzBot/1.0"
-            }
-            
-            # Disable SSL verification for internal Mercury
-            self.session.verify = False
-            self.session.allow_redirects = False
-            
-            # Add SSPI auth if available (Windows)
-            if SSPI_AVAILABLE:
-                self.session.auth = HttpNegotiateAuth()
-                self.logger.info("Using SSPI/Kerberos authentication")
-            
-            # Disable SSL warnings
-            import urllib3
-            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        except Exception as e:
+            self.logger.error(f"Failed to establish session: {e}")
+            return None
+        
+        # Disable SSL warnings
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         
         return self.session
     
