@@ -136,7 +136,6 @@ Cookie location: ~/.midway/cookie
 - Break: 4:55-5:30 AM
 ```
 
-## Implementation Steps for Claude Code
 
 ### Step 1: Environment Setup
 ```bash

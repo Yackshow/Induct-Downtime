@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>Midway Authentication Portal</title>
+<link rel="stylesheet" media="all" href="/assets/application-358001b6f1f91911d2c2d782bd11eb6ff832bc027957d36938d01d9c57b4d7d7.css" />
+<script src="/assets/application-fc7a38ee3257501ecb42c51586994a1c3f7e714b299ec1b83db80ca1ebb0b7cd.js"></script>
+<script src="/packs/js/client-side-metrics-64b5e917f418659a5ae7.js"></script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="aGrcj03MrmDT1P8XtT1xLhJnl+EQrDeL+k7mM+t1H2KwQXieEQ8WON59Kn5jcAXLYuhyE9wMjdLb4Qo6DH7vBA==" />
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<script src="/assets/login-5f4607a3effee4c149258f44642a94045f30f57302e2a1145be74744ea3e376a.js" defer="defer"></script>
+<main>
+    <div class="banner-item">
+      You are using old UI, to switch to new UI click
+      <button id="switch-to-new-ui-button">here</button>
+    </div>
+    <!-- if there is no stored username, it is possible that the backend did not render the correct UI for the user
+    (e.g. when they are enforced to use the new UI). Therefore, we show this warning message to instruct them to manually
+    switch to the new UI if they see errors. -->
+
+
+  <form id="fpr_form" name="fpr_form"></form>
+  <section id="base-pane">
+    <div id="login-pane">
+      <div id="input-params" data-session-status="{&quot;csrf_param&quot;:&quot;authenticity_token&quot;,&quot;csrf_token&quot;:&quot;l7wA1a/LRTLD/7PzWgrnzzInIGjtkLXi36L8//jZtkRPl6TE8wj9as5WZpqMR5MqQqjFmiEwD7v+DRD2H9JGIg==&quot;,&quot;session_uuid&quot;:&quot;977496bc35cfa6b22b0f49167c9874bb&quot;,&quot;client_cert_valid&quot;:false,&quot;totp_enabled&quot;:true,&quot;display_otp_enabled&quot;:true,&quot;mcs_andon_cord_pulled&quot;:false,&quot;otp_enabled&quot;:true,&quot;authenticated&quot;:false,&quot;auth_prompt&quot;:&quot;PIN&quot;}" data-js-params="{&quot;next&quot;:&quot;/SSO/redirect?response_type=id_token\u0026client_id=https%3A%2F%2Fmercury.amazon.com%3A443\u0026redirect_uri=https%3A%2F%2Fmercury.amazon.com%3A443%2FgetQueryResponse%3FID%3D127de24b92c1f65c47f001541fbc6974%26region%3Dna\u0026scope=openid\u0026nonce=17e392e178b843131536ea2e7cc866827ca1d9f4894457d58d1dd977e6f3fc4b\u0026acr_values=\u0026sentry_handler_version=TomcatSSOFilter-3.0-1&quot;}"></div>
+      <h2>Sign in</h2>
+      <!--This hidden header is added because many canaries look for this text to know that they are on a Midway page-->
+      <h2 hidden>Sign in with Midway</h2>
+      <div class="ta-right">
+        <a class="medium-heavy-text small-text" href="https://w.amazon.com/index.php/NextGenMidway/FAQ">Why am I here?</a>
+      </div>
+
+      <form id="login_form" action="/api/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="SkJgro1tYrP+BcoH0EOJGAdn5/26MnRc0KBye5gNTZiSacS/0a7a6/OsH24GDv39d+gCD3aSzgXxD55yfwa9/g==" autocomplete="off" />
+        <input type="hidden" name="old_login_form" id="old_login_form" value="true" autocomplete="off" />
+        <input type="hidden" name="next" id="next" value="/SSO/redirect?response_type=id_token&amp;client_id=https%3A%2F%2Fmercury.amazon.com%3A443&amp;redirect_uri=https%3A%2F%2Fmercury.amazon.com%3A443%2FgetQueryResponse%3FID%3D127de24b92c1f65c47f001541fbc6974%26region%3Dna&amp;scope=openid&amp;nonce=17e392e178b843131536ea2e7cc866827ca1d9f4894457d58d1dd977e6f3fc4b&amp;acr_values=&amp;sentry_handler_version=TomcatSSOFilter-3.0-1" autocomplete="off" />
+        <p>
+          <label for="user_name">Amazon username</label><br/>
+          <input type="text" name="user_name" id="user_name" value="mackhun" placeholder="Enter your Amazon username" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </p>
+
+        <p>
+        <div class="row">
+          <div class="cell-50">
+            <label for="password">PIN</label>
+          </div>
+          <div class="cell-50 ta-right">
+            <a class="medium-heavy-text small-text" href="https://password-v2.corp.amazon.com/selfReset">Reset password</a>
+          </div>
+        </div>
+        <input type="password" name="password" id="password" value="" placeholder="Enter your security key PIN" autocomplete="current-password" autocorrect="off" autocapitalize="off" />
+        <p>
+          <input type="submit" name="commit" value="Sign in" class="login-button inline-button orange-button" id="verify_btn" data-disable-with="Sign in" />
+        <p id="error-message" class="m1-red ta-center mb-0 invisible" tabindex="0">Error</p>
+        <p id="forgot-password" class="ta-center mb-0" hidden>
+          <a href="https://password-v2.corp.amazon.com/selfReset">Did you forget your password?</a></p>
+</form>    </div>
+
+    <div id="u2f-login-pane" class="ta-center" hidden>
+      <h2>Second factor required</h2>
+      <div class="row pb-1 pl-2 flex-container">
+        <div class="cell-20 hide-small">
+          <img height="128" alt="Security key with lock" src="/assets/yubikey-with-lock-4617700bf1ac51a21ee884c1e5b8208eb7c9fff492246a69ec718c8654e75cdd.png" />
+        </div>
+        <div class="cell-80 ta-left cell-100-small move-to-end-small">
+          <ol class="no-indent">
+            <li>Plug your security key into a USB slot on your computer</li>
+            <li>Touch your security key</li>
+              <li>Or, if short touch does not work press and hold for 3 seconds to activate OTP</li>
+          </ol>
+        </div>
+          <div class="cell-80">
+            <p>
+            <form action="/api/yubiotp/login" method="post">
+              <input id="otp-field" name="otp" autocomplete="off" class="otp-field" autocapitalize="none" style="width: 185px">
+              <input id="otp-submit-btn" type="submit" value="Submit">
+            </form>
+            <p id="u2f-error-message" class="m1-red" hidden></p>
+          </div>
+      </div>
+    </div>
+
+    <div id="redirect-pane" class="ta-center" hidden>
+      <h2 class="green"> Authentication Successful</h2>
+      <br/>
+      <br/>
+      <h3 class="">Now redirecting you to <span id="redirect-url"></span></h3>
+      <br/>
+      <img alt="Spinning processing circle" src="/assets/ajax-spinner-4e6e1fb3f08a162cfd4f8fb435769612a801c3cea4684b1efc71455e3795c5ca.gif" />
+    </div>
+
+    <div id="loadingDiv" class="ta-center invisible">
+      <img alt="Spinning processing circle" src="/assets/ajax-spinner-4e6e1fb3f08a162cfd4f8fb435769612a801c3cea4684b1efc71455e3795c5ca.gif" />
+    </div>
+  </section>
+  
+  <footer>
+    <p>
+      Secured by  <a id="help_link" href="https://w.amazon.com/index.php/NextGenMidway/FAQ">Midway</a>. For login issues, 
+      <a href="https://firstaid.it.a2z.com/chat">chat with IT support</a>.
+    </p>
+
+    <img height="32" class="mt-2" alt="Amazon logo" title="Midway is brought to you by David, Eric, Carl, Matt, Sunitha, Tyler, Alex, Pratik, Stefan, Chris, Misha, and more!" src="/assets/amazon-logo-f589d03bb13bcabcfcfdd596bf2f0c4bc4996adc605cc737991ce9c6a0025be6.png" />
+  </footer>
+
+</main>
+
+<script src="/packs/js/old-ui-181ec8743bb2257652f3.js"></script>
+</body>
+</html>
