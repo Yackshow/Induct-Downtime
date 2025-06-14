@@ -18,7 +18,7 @@ def analyze_mercury_data():
     
     # Initialize scraper
     scraper = MercuryScraper(
-        mercury_url="https://mercury.amazon.com/getQueryResponse?ID=127de24b92c1f65c47f001541fbc6974&region=na",
+        mercury_url="https://mercury.amazon.com/getQueryResponse?ID=a9ebdbf5325e9395d4fbd114d3316f0c&region=na",
         valid_locations=['GA1', 'GA2', 'GA3', 'GA4', 'GA5', 'GA6', 'GA7', 'GA8', 'GA9', 'GA10'],
         valid_statuses=['INDUCTED', 'INDUCT', 'STOW_BUFFER', 'AT_STATION']
     )

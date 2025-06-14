@@ -1,0 +1,41 @@
+{
+  "tables_updated": [
+    {
+      "name": "TBC Deep Dive Data",
+      "old_sort": [
+        "_score",
+        "desc"
+      ],
+      "new_sort": [
+        "compLastScanInOrder.timestamp",
+        "desc"
+      ],
+      "display_size": 500,
+      "purpose": "Testing sorting functionality with current data"
+    },
+    {
+      "name": "AT_STATION Real-Time Data",
+      "sort": [
+        "compLastScanInOrder.timestamp",
+        "desc"
+      ],
+      "display_size": 500,
+      "purpose": "Real-time monitoring when shift is active"
+    }
+  ],
+  "sorting_field": "compLastScanInOrder.timestamp",
+  "sorting_order": "descending (newest first)",
+  "test_expectations": [
+    "Newest package timestamps at top of TBC table",
+    "Most recent scans appear first",
+    "Packages sorted by last scan time (newest to oldest)",
+    "Can verify sorting is working during non-shift hours"
+  ],
+  "verification_steps": [
+    "1. Upload Modified_Mercury_Both_Tables_Sorted.json",
+    "2. Open TBC Deep Dive Data table",
+    "3. Check compLastScanInOrder.timestamp column",
+    "4. Verify newest timestamps are at the top",
+    "5. Confirm sorting by timestamp is working"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "sorting_changes": {
+    "old_sort": [
+      "_score",
+      "desc"
+    ],
+    "new_sort": [
+      "compLastScanInOrder.timestamp",
+      "desc"
+    ],
+    "sort_field": "compLastScanInOrder.timestamp",
+    "sort_order": "descending (newest first)"
+  },
+  "display_changes": {
+    "default_size": 500,
+    "batch_size": 1000,
+    "sortable": true
+  },
+  "benefits": [
+    "Newest AT_STATION packages appear first",
+    "Catch new arrivals immediately",
+    "Avoid missing packages due to pagination",
+    "Prioritize recent induct activity",
+    "Better real-time monitoring"
+  ]
+}

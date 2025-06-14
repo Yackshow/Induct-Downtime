@@ -1,17 +1,23 @@
+
+# ✅ FIELD MAPPING DISCOVERY:
+# Web Interface "Last Induct Scan" = compAtStationData.compCurrentNodeAtStationData.firstEventTimestamp (HTML)
+# This field shows ACTUAL induct arrival time, not latest scan anywhere
+# Perfect for downtime monitoring between consecutive induct arrivals!
+
 mercury:
-  url: "https://mercury.amazon.com/getQueryResponse?ID=127de24b92c1f65c47f001541fbc6974&region=na"
+  url: "https://mercury.amazon.com/getQueryResponse?ID=a9ebdbf5325e9395d4fbd114d3316f0c&region=na"
   scrape_interval: 120  # seconds
   
 locations:
   valid: ["GA1", "GA2", "GA3", "GA4", "GA5", "GA6", "GA7", "GA8", "GA9", "GA10"]
   
-# Updated statuses based on actual Mercury data analysis
+# Status filters optimized for AT_STATION induct monitoring
 statuses:
-  # Current filter (only 10 packages):
-  # valid: ["INDUCTED", "INDUCT", "STOW_BUFFER", "AT_STATION"]
+  # AT_STATION focused filter for real-time induct monitoring:
+  valid: ["AT_STATION", "INDUCTED", "INDUCT", "STOW_BUFFER"]
   
-  # Expanded filter to include packages that passed through induct (990 more packages):
-  valid: ["INDUCTED", "INDUCT", "STOW_BUFFER", "AT_STATION", "READY_FOR_DEPARTURE", "DELIVERED", "ON_ROAD_WITH_DELIVERY_ASSOCIATE"]
+  # Alternative: Include recently processed packages for historical analysis:
+  # valid: ["AT_STATION", "INDUCTED", "INDUCT", "STOW_BUFFER", "READY_FOR_DEPARTURE"]
   
 downtime:
   categories:

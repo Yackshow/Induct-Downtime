@@ -1,0 +1,16 @@
+{
+  "original_title": "DYT6 - Mack - Deep Dive & Bot V2",
+  "changes_made": [
+    "Duplicated \"TBC Deep Dive Data\" table",
+    "Created \"AT_STATION Real-Time Data\" table with Query ID 14",
+    "Added AT_STATION filter: compLastScanInOrder.internalStatusCode:AT_STATION",
+    "Reduced batch size for faster real-time loading",
+    "Removed \"Induct Flow By Location - Raw Data\" table"
+  ],
+  "tables_in_data_pull_section": [
+    "TBC Deep Dive Data",
+    "AT_STATION Real-Time Data"
+  ],
+  "at_station_query_id": 14,
+  "at_station_filter": "compLastScanInOrder.internalStatusCode:AT_STATION"
+}

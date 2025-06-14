@@ -81,7 +81,7 @@ class InductDowntimeMonitor:
         # Fallback configuration
         return {
             'mercury': {
-                'url': 'https://mercury.amazon.com/getQueryResponse?ID=127de24b92c1f65c47f001541fbc6974&region=na',
+                'url': 'https://mercury.amazon.com/getQueryResponse?ID=a9ebdbf5325e9395d4fbd114d3316f0c&region=na',
                 'scrape_interval': 120
             },
             'locations': {

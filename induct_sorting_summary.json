@@ -1,0 +1,31 @@
+{
+  "sorting_configuration": {
+    "sort_field": "compAtStationData.compCurrentNodeAtStationData.firstEventTimestamp",
+    "sort_order": "descending (newest induct scans first)",
+    "purpose": "Show most recent induct arrivals at the top"
+  },
+  "tables_updated": 2,
+  "display_settings": {
+    "AT_STATION Real-Time Data": {
+      "size": 500,
+      "batch_size": 1000
+    },
+    "TBC Deep Dive Data": {
+      "size": 300,
+      "batch_size": 1000
+    }
+  },
+  "benefits": [
+    "Newest induct arrivals appear first",
+    "Catch recent packages immediately",
+    "Monitor most current induct activity",
+    "Perfect for real-time downtime detection",
+    "Avoid missing new arrivals due to pagination"
+  ],
+  "what_youll_see": [
+    "Top rows: Packages that just arrived at induct stations",
+    "Recent induct timestamps like 2025-06-14 12:xx:xx at top",
+    "Older induct timestamps towards bottom",
+    "Clear view of induct activity timeline"
+  ]
+}

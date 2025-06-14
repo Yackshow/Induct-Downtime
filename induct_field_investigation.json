@@ -1,0 +1,22 @@
+{
+  "objective": "Find the Last Induct Scan field equivalent in HTML response",
+  "web_interface_target": "Last Induct Scan column",
+  "added_fields": [
+    "compAtStationData.compCurrentNodeAtStationData.firstEventTimestamp",
+    "compAtStationData.compFirstNodeAtStationData.firstEventTimestamp",
+    "Induct.timestamp",
+    "Induct.scanTimestamp",
+    "Induct.metaData.SCAN_TIME",
+    "Induct.metaData.TIMESTAMP",
+    "lastInductScan",
+    "lastInductScanTimestamp"
+  ],
+  "tables_updated": 2,
+  "next_steps": [
+    "Upload Modified_Mercury_Enhanced_Induct_Fields.json",
+    "Check which new fields contain induct scan data",
+    "Compare timestamps with web interface Last Induct Scan",
+    "Identify the correct field for downtime monitoring",
+    "Update Python script to use the correct field"
+  ]
+}
