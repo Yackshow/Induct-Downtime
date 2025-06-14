@@ -1,0 +1,253 @@
+{
+  "timestamp": "20250614_142625",
+  "analysis_summary": {
+    "total_records": 1000,
+    "locations_analyzed": 1,
+    "total_gaps": 17,
+    "analysis_ready": true
+  },
+  "downtime_analysis": {
+    "GA1": {
+      "total_packages": 1000,
+      "total_gaps": 17,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 54.0,
+            "prev_package": "TBC498652591009",
+            "curr_package": "TBC498641623009",
+            "prev_time": "2025-06-14 11:05:59",
+            "curr_time": "2025-06-14 11:06:53"
+          },
+          {
+            "gap_seconds": 21.0,
+            "prev_package": "TBC498131732009",
+            "curr_package": "TBC498127523009",
+            "prev_time": "2025-06-14 11:10:30",
+            "curr_time": "2025-06-14 11:10:51"
+          },
+          {
+            "gap_seconds": 24.0,
+            "prev_package": "TBC498103888009",
+            "curr_package": "TBC496780848009",
+            "prev_time": "2025-06-14 11:11:43",
+            "curr_time": "2025-06-14 11:12:07"
+          },
+          {
+            "gap_seconds": 23.0,
+            "prev_package": "TBC496919091009",
+            "curr_package": "TBC496954804009",
+            "prev_time": "2025-06-14 11:12:11",
+            "curr_time": "2025-06-14 11:12:34"
+          },
+          {
+            "gap_seconds": 41.0,
+            "prev_package": "TBC498491705009",
+            "curr_package": "TBC495854757009",
+            "prev_time": "2025-06-14 11:16:58",
+            "curr_time": "2025-06-14 11:17:39"
+          },
+          {
+            "gap_seconds": 23.0,
+            "prev_package": "TBC497156561009",
+            "curr_package": "TBC497448553009",
+            "prev_time": "2025-06-14 11:18:19",
+            "curr_time": "2025-06-14 11:18:42"
+          },
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBC497289890009",
+            "curr_package": "TBC498457035009",
+            "prev_time": "2025-06-14 11:20:08",
+            "curr_time": "2025-06-14 11:20:52"
+          },
+          {
+            "gap_seconds": 52.0,
+            "prev_package": "TBC494846498009",
+            "curr_package": "TBC498349825009",
+            "prev_time": "2025-06-14 11:29:27",
+            "curr_time": "2025-06-14 11:30:19"
+          },
+          {
+            "gap_seconds": 39.0,
+            "prev_package": "TBC498119214009",
+            "curr_package": "TBC498070514009",
+            "prev_time": "2025-06-14 11:33:11",
+            "curr_time": "2025-06-14 11:33:50"
+          },
+          {
+            "gap_seconds": 24.0,
+            "prev_package": "TBC498123142009",
+            "curr_package": "TBC497875501009",
+            "prev_time": "2025-06-14 11:35:32",
+            "curr_time": "2025-06-14 11:35:56"
+          },
+          {
+            "gap_seconds": 35.0,
+            "prev_package": "TBC498633292009",
+            "curr_package": "TBC498315589009",
+            "prev_time": "2025-06-14 11:38:02",
+            "curr_time": "2025-06-14 11:38:37"
+          },
+          {
+            "gap_seconds": 20.0,
+            "prev_package": "TBC498625757009",
+            "curr_package": "TBC498231255009",
+            "prev_time": "2025-06-14 11:40:40",
+            "curr_time": "2025-06-14 11:41:00"
+          },
+          {
+            "gap_seconds": 35.0,
+            "prev_package": "TBC498036367009",
+            "curr_package": "TBC497896563009",
+            "prev_time": "2025-06-14 11:45:48",
+            "curr_time": "2025-06-14 11:46:23"
+          },
+          {
+            "gap_seconds": 42.0,
+            "prev_package": "TBC498459504009",
+            "curr_package": "TBC498406854009",
+            "prev_time": "2025-06-14 11:53:20",
+            "curr_time": "2025-06-14 11:54:02"
+          },
+          {
+            "gap_seconds": 55.0,
+            "prev_package": "TBC498144451009",
+            "curr_package": "TBC498374712009",
+            "prev_time": "2025-06-14 11:57:08",
+            "curr_time": "2025-06-14 11:58:03"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 72.0,
+            "prev_package": "TBC497995652009",
+            "curr_package": "TBC497997277009",
+            "prev_time": "2025-06-14 11:25:25",
+            "curr_time": "2025-06-14 11:26:37"
+          }
+        ],
+        "120-780s": [
+          {
+            "gap_seconds": 360.0,
+            "prev_package": "TBC498374712009",
+            "curr_package": "TBC498603969009",
+            "prev_time": "2025-06-14 11:58:03",
+            "curr_time": "2025-06-14 12:04:03"
+          }
+        ]
+      },
+      "avg_gap": 56.705882352941174,
+      "max_gap": 360.0,
+      "min_gap": 20.0,
+      "time_span": 3659.0,
+      "sample_gaps": [
+        {
+          "gap_seconds": 54.0,
+          "prev_package": "TBC498652591009",
+          "curr_package": "TBC498641623009",
+          "prev_time": "2025-06-14 11:05:59",
+          "curr_time": "2025-06-14 11:06:53"
+        },
+        {
+          "gap_seconds": 21.0,
+          "prev_package": "TBC498131732009",
+          "curr_package": "TBC498127523009",
+          "prev_time": "2025-06-14 11:10:30",
+          "curr_time": "2025-06-14 11:10:51"
+        },
+        {
+          "gap_seconds": 24.0,
+          "prev_package": "TBC498103888009",
+          "curr_package": "TBC496780848009",
+          "prev_time": "2025-06-14 11:11:43",
+          "curr_time": "2025-06-14 11:12:07"
+        }
+      ],
+      "first_package_time": "2025-06-14 11:03:04",
+      "last_package_time": "2025-06-14 12:04:03"
+    }
+  },
+  "sample_records": [
+    {
+      "tracking_id": "TBC498603969009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 12:04:03",
+      "induct_time_str": "2025-06-14T12:04:03Z",
+      "row_number": 1
+    },
+    {
+      "tracking_id": "TBC498374712009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:58:03",
+      "induct_time_str": "2025-06-14T11:58:03Z",
+      "row_number": 2
+    },
+    {
+      "tracking_id": "TBC498144451009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:57:08",
+      "induct_time_str": "2025-06-14T11:57:08Z",
+      "row_number": 3
+    },
+    {
+      "tracking_id": "TBC498039747009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:57:04",
+      "induct_time_str": "2025-06-14T11:57:04Z",
+      "row_number": 4
+    },
+    {
+      "tracking_id": "TBC498071647009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:56:59",
+      "induct_time_str": "2025-06-14T11:56:59Z",
+      "row_number": 5
+    },
+    {
+      "tracking_id": "TBC498130020009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:56:55",
+      "induct_time_str": "2025-06-14T11:56:55Z",
+      "row_number": 6
+    },
+    {
+      "tracking_id": "TBC498140688009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:56:53",
+      "induct_time_str": "2025-06-14T11:56:53Z",
+      "row_number": 7
+    },
+    {
+      "tracking_id": "TBC498156806009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:56:51",
+      "induct_time_str": "2025-06-14T11:56:51Z",
+      "row_number": 8
+    },
+    {
+      "tracking_id": "TBC498141493009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:56:48",
+      "induct_time_str": "2025-06-14T11:56:48Z",
+      "row_number": 9
+    },
+    {
+      "tracking_id": "TBC498162114009",
+      "location": "GA1",
+      "status": "UNKNOWN",
+      "induct_timestamp": "2025-06-14 11:56:41",
+      "induct_time_str": "2025-06-14T11:56:41Z",
+      "row_number": 10
+    }
+  ]
+}

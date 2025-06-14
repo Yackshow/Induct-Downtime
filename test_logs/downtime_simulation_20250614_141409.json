@@ -1,0 +1,1656 @@
+{
+  "timestamp": "20250614_141409",
+  "analysis": {
+    "GA1": {
+      "total_packages": 10,
+      "total_gaps": 9,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 36.0,
+            "prev_package": "TBCGA1000",
+            "curr_package": "TBCGA1001",
+            "prev_time": "2025-06-14 11:30:22",
+            "curr_time": "2025-06-14 11:30:58"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA1003",
+            "curr_package": "TBCGA1004",
+            "prev_time": "2025-06-14 11:33:43",
+            "curr_time": "2025-06-14 11:34:10"
+          },
+          {
+            "gap_seconds": 51.0,
+            "prev_package": "TBCGA1004",
+            "curr_package": "TBCGA1005",
+            "prev_time": "2025-06-14 11:34:10",
+            "curr_time": "2025-06-14 11:35:01"
+          },
+          {
+            "gap_seconds": 29.0,
+            "prev_package": "TBCGA1005",
+            "curr_package": "TBCGA1006",
+            "prev_time": "2025-06-14 11:35:01",
+            "curr_time": "2025-06-14 11:35:30"
+          },
+          {
+            "gap_seconds": 54.0,
+            "prev_package": "TBCGA1007",
+            "curr_package": "TBCGA1008",
+            "prev_time": "2025-06-14 11:36:54",
+            "curr_time": "2025-06-14 11:37:48"
+          },
+          {
+            "gap_seconds": 58.0,
+            "prev_package": "TBCGA1008",
+            "curr_package": "TBCGA1009",
+            "prev_time": "2025-06-14 11:37:48",
+            "curr_time": "2025-06-14 11:38:46"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 89.0,
+            "prev_package": "TBCGA1001",
+            "curr_package": "TBCGA1002",
+            "prev_time": "2025-06-14 11:30:58",
+            "curr_time": "2025-06-14 11:32:27"
+          },
+          {
+            "gap_seconds": 76.0,
+            "prev_package": "TBCGA1002",
+            "curr_package": "TBCGA1003",
+            "prev_time": "2025-06-14 11:32:27",
+            "curr_time": "2025-06-14 11:33:43"
+          },
+          {
+            "gap_seconds": 84.0,
+            "prev_package": "TBCGA1006",
+            "curr_package": "TBCGA1007",
+            "prev_time": "2025-06-14 11:35:30",
+            "curr_time": "2025-06-14 11:36:54"
+          }
+        ],
+        "120-780s": []
+      },
+      "avg_gap": 56.0,
+      "max_gap": 89.0,
+      "min_gap": 27.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA1000",
+          "location": "GA1",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:22",
+          "induct_time_str": "2025-06-14 11:30:22"
+        },
+        {
+          "tracking_id": "TBCGA1001",
+          "location": "GA1",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:58",
+          "induct_time_str": "2025-06-14 11:30:58"
+        },
+        {
+          "tracking_id": "TBCGA1002",
+          "location": "GA1",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:27",
+          "induct_time_str": "2025-06-14 11:32:27"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 36.0,
+          "prev_package": "TBCGA1000",
+          "curr_package": "TBCGA1001",
+          "prev_time": "2025-06-14 11:30:22",
+          "curr_time": "2025-06-14 11:30:58"
+        },
+        {
+          "gap_seconds": 89.0,
+          "prev_package": "TBCGA1001",
+          "curr_package": "TBCGA1002",
+          "prev_time": "2025-06-14 11:30:58",
+          "curr_time": "2025-06-14 11:32:27"
+        },
+        {
+          "gap_seconds": 76.0,
+          "prev_package": "TBCGA1002",
+          "curr_package": "TBCGA1003",
+          "prev_time": "2025-06-14 11:32:27",
+          "curr_time": "2025-06-14 11:33:43"
+        }
+      ]
+    },
+    "GA2": {
+      "total_packages": 22,
+      "total_gaps": 21,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 43.0,
+            "prev_package": "TBCGA2000",
+            "curr_package": "TBCGA2001",
+            "prev_time": "2025-06-14 11:30:26",
+            "curr_time": "2025-06-14 11:31:09"
+          },
+          {
+            "gap_seconds": 38.0,
+            "prev_package": "TBCGA2002",
+            "curr_package": "TBCGA2003",
+            "prev_time": "2025-06-14 11:32:32",
+            "curr_time": "2025-06-14 11:33:10"
+          },
+          {
+            "gap_seconds": 51.0,
+            "prev_package": "TBCGA2003",
+            "curr_package": "TBCGA2004",
+            "prev_time": "2025-06-14 11:33:10",
+            "curr_time": "2025-06-14 11:34:01"
+          },
+          {
+            "gap_seconds": 56.0,
+            "prev_package": "TBCGA2004",
+            "curr_package": "TBCGA2005",
+            "prev_time": "2025-06-14 11:34:01",
+            "curr_time": "2025-06-14 11:34:57"
+          },
+          {
+            "gap_seconds": 30.0,
+            "prev_package": "TBCGA2005",
+            "curr_package": "TBCGA2006",
+            "prev_time": "2025-06-14 11:34:57",
+            "curr_time": "2025-06-14 11:35:27"
+          },
+          {
+            "gap_seconds": 32.0,
+            "prev_package": "TBCGA2007",
+            "curr_package": "TBCGA2008",
+            "prev_time": "2025-06-14 11:37:09",
+            "curr_time": "2025-06-14 11:37:41"
+          },
+          {
+            "gap_seconds": 37.0,
+            "prev_package": "TBCGA2010",
+            "curr_package": "TBCGA2011",
+            "prev_time": "2025-06-14 11:39:56",
+            "curr_time": "2025-06-14 11:40:33"
+          },
+          {
+            "gap_seconds": 45.0,
+            "prev_package": "TBCGA2011",
+            "curr_package": "TBCGA2012",
+            "prev_time": "2025-06-14 11:40:33",
+            "curr_time": "2025-06-14 11:41:18"
+          },
+          {
+            "gap_seconds": 56.0,
+            "prev_package": "TBCGA2012",
+            "curr_package": "TBCGA2013",
+            "prev_time": "2025-06-14 11:41:18",
+            "curr_time": "2025-06-14 11:42:14"
+          },
+          {
+            "gap_seconds": 28.0,
+            "prev_package": "TBCGA2015",
+            "curr_package": "TBCGA2016",
+            "prev_time": "2025-06-14 11:48:34",
+            "curr_time": "2025-06-14 11:49:02"
+          },
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBCGA2016",
+            "curr_package": "TBCGA2017",
+            "prev_time": "2025-06-14 11:49:02",
+            "curr_time": "2025-06-14 11:49:46"
+          },
+          {
+            "gap_seconds": 29.0,
+            "prev_package": "TBCGA2017",
+            "curr_package": "TBCGA2018",
+            "prev_time": "2025-06-14 11:49:46",
+            "curr_time": "2025-06-14 11:50:15"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA2019",
+            "curr_package": "TBCGA2020",
+            "prev_time": "2025-06-14 11:51:25",
+            "curr_time": "2025-06-14 11:51:52"
+          },
+          {
+            "gap_seconds": 46.0,
+            "prev_package": "TBCGA2020",
+            "curr_package": "TBCGA2021",
+            "prev_time": "2025-06-14 11:51:52",
+            "curr_time": "2025-06-14 11:52:38"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 83.0,
+            "prev_package": "TBCGA2001",
+            "curr_package": "TBCGA2002",
+            "prev_time": "2025-06-14 11:31:09",
+            "curr_time": "2025-06-14 11:32:32"
+          },
+          {
+            "gap_seconds": 102.0,
+            "prev_package": "TBCGA2006",
+            "curr_package": "TBCGA2007",
+            "prev_time": "2025-06-14 11:35:27",
+            "curr_time": "2025-06-14 11:37:09"
+          },
+          {
+            "gap_seconds": 69.0,
+            "prev_package": "TBCGA2008",
+            "curr_package": "TBCGA2009",
+            "prev_time": "2025-06-14 11:37:41",
+            "curr_time": "2025-06-14 11:38:50"
+          },
+          {
+            "gap_seconds": 66.0,
+            "prev_package": "TBCGA2009",
+            "curr_package": "TBCGA2010",
+            "prev_time": "2025-06-14 11:38:50",
+            "curr_time": "2025-06-14 11:39:56"
+          },
+          {
+            "gap_seconds": 80.0,
+            "prev_package": "TBCGA2013",
+            "curr_package": "TBCGA2014",
+            "prev_time": "2025-06-14 11:42:14",
+            "curr_time": "2025-06-14 11:43:34"
+          },
+          {
+            "gap_seconds": 70.0,
+            "prev_package": "TBCGA2018",
+            "curr_package": "TBCGA2019",
+            "prev_time": "2025-06-14 11:50:15",
+            "curr_time": "2025-06-14 11:51:25"
+          }
+        ],
+        "120-780s": [
+          {
+            "gap_seconds": 300.0,
+            "prev_package": "TBCGA2014",
+            "curr_package": "TBCGA2015",
+            "prev_time": "2025-06-14 11:43:34",
+            "curr_time": "2025-06-14 11:48:34"
+          }
+        ]
+      },
+      "avg_gap": 63.42857142857143,
+      "max_gap": 300.0,
+      "min_gap": 27.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA2000",
+          "location": "GA2",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:26",
+          "induct_time_str": "2025-06-14 11:30:26"
+        },
+        {
+          "tracking_id": "TBCGA2001",
+          "location": "GA2",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:31:09",
+          "induct_time_str": "2025-06-14 11:31:09"
+        },
+        {
+          "tracking_id": "TBCGA2002",
+          "location": "GA2",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:32",
+          "induct_time_str": "2025-06-14 11:32:32"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 43.0,
+          "prev_package": "TBCGA2000",
+          "curr_package": "TBCGA2001",
+          "prev_time": "2025-06-14 11:30:26",
+          "curr_time": "2025-06-14 11:31:09"
+        },
+        {
+          "gap_seconds": 83.0,
+          "prev_package": "TBCGA2001",
+          "curr_package": "TBCGA2002",
+          "prev_time": "2025-06-14 11:31:09",
+          "curr_time": "2025-06-14 11:32:32"
+        },
+        {
+          "gap_seconds": 38.0,
+          "prev_package": "TBCGA2002",
+          "curr_package": "TBCGA2003",
+          "prev_time": "2025-06-14 11:32:32",
+          "curr_time": "2025-06-14 11:33:10"
+        }
+      ]
+    },
+    "GA8": {
+      "total_packages": 10,
+      "total_gaps": 9,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 51.0,
+            "prev_package": "TBCGA8000",
+            "curr_package": "TBCGA8001",
+            "prev_time": "2025-06-14 11:30:33",
+            "curr_time": "2025-06-14 11:31:24"
+          },
+          {
+            "gap_seconds": 36.0,
+            "prev_package": "TBCGA8001",
+            "curr_package": "TBCGA8002",
+            "prev_time": "2025-06-14 11:31:24",
+            "curr_time": "2025-06-14 11:32:00"
+          },
+          {
+            "gap_seconds": 43.0,
+            "prev_package": "TBCGA8002",
+            "curr_package": "TBCGA8003",
+            "prev_time": "2025-06-14 11:32:00",
+            "curr_time": "2025-06-14 11:32:43"
+          },
+          {
+            "gap_seconds": 42.0,
+            "prev_package": "TBCGA8004",
+            "curr_package": "TBCGA8005",
+            "prev_time": "2025-06-14 11:34:20",
+            "curr_time": "2025-06-14 11:35:02"
+          },
+          {
+            "gap_seconds": 47.0,
+            "prev_package": "TBCGA8005",
+            "curr_package": "TBCGA8006",
+            "prev_time": "2025-06-14 11:35:02",
+            "curr_time": "2025-06-14 11:35:49"
+          },
+          {
+            "gap_seconds": 30.0,
+            "prev_package": "TBCGA8006",
+            "curr_package": "TBCGA8007",
+            "prev_time": "2025-06-14 11:35:49",
+            "curr_time": "2025-06-14 11:36:19"
+          },
+          {
+            "gap_seconds": 41.0,
+            "prev_package": "TBCGA8007",
+            "curr_package": "TBCGA8008",
+            "prev_time": "2025-06-14 11:36:19",
+            "curr_time": "2025-06-14 11:37:00"
+          },
+          {
+            "gap_seconds": 42.0,
+            "prev_package": "TBCGA8008",
+            "curr_package": "TBCGA8009",
+            "prev_time": "2025-06-14 11:37:00",
+            "curr_time": "2025-06-14 11:37:42"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 97.0,
+            "prev_package": "TBCGA8003",
+            "curr_package": "TBCGA8004",
+            "prev_time": "2025-06-14 11:32:43",
+            "curr_time": "2025-06-14 11:34:20"
+          }
+        ],
+        "120-780s": []
+      },
+      "avg_gap": 47.666666666666664,
+      "max_gap": 97.0,
+      "min_gap": 30.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA8000",
+          "location": "GA8",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:33",
+          "induct_time_str": "2025-06-14 11:30:33"
+        },
+        {
+          "tracking_id": "TBCGA8001",
+          "location": "GA8",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:31:24",
+          "induct_time_str": "2025-06-14 11:31:24"
+        },
+        {
+          "tracking_id": "TBCGA8002",
+          "location": "GA8",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:00",
+          "induct_time_str": "2025-06-14 11:32:00"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 51.0,
+          "prev_package": "TBCGA8000",
+          "curr_package": "TBCGA8001",
+          "prev_time": "2025-06-14 11:30:33",
+          "curr_time": "2025-06-14 11:31:24"
+        },
+        {
+          "gap_seconds": 36.0,
+          "prev_package": "TBCGA8001",
+          "curr_package": "TBCGA8002",
+          "prev_time": "2025-06-14 11:31:24",
+          "curr_time": "2025-06-14 11:32:00"
+        },
+        {
+          "gap_seconds": 43.0,
+          "prev_package": "TBCGA8002",
+          "curr_package": "TBCGA8003",
+          "prev_time": "2025-06-14 11:32:00",
+          "curr_time": "2025-06-14 11:32:43"
+        }
+      ]
+    },
+    "GA7": {
+      "total_packages": 11,
+      "total_gaps": 10,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBCGA7000",
+            "curr_package": "TBCGA7001",
+            "prev_time": "2025-06-14 11:30:38",
+            "curr_time": "2025-06-14 11:31:22"
+          },
+          {
+            "gap_seconds": 34.0,
+            "prev_package": "TBCGA7001",
+            "curr_package": "TBCGA7002",
+            "prev_time": "2025-06-14 11:31:22",
+            "curr_time": "2025-06-14 11:31:56"
+          },
+          {
+            "gap_seconds": 24.0,
+            "prev_package": "TBCGA7002",
+            "curr_package": "TBCGA7003",
+            "prev_time": "2025-06-14 11:31:56",
+            "curr_time": "2025-06-14 11:32:20"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA7003",
+            "curr_package": "TBCGA7004",
+            "prev_time": "2025-06-14 11:32:20",
+            "curr_time": "2025-06-14 11:32:47"
+          },
+          {
+            "gap_seconds": 29.0,
+            "prev_package": "TBCGA7006",
+            "curr_package": "TBCGA7007",
+            "prev_time": "2025-06-14 11:35:43",
+            "curr_time": "2025-06-14 11:36:12"
+          },
+          {
+            "gap_seconds": 57.0,
+            "prev_package": "TBCGA7009",
+            "curr_package": "TBCGA7010",
+            "prev_time": "2025-06-14 11:42:25",
+            "curr_time": "2025-06-14 11:43:22"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 94.0,
+            "prev_package": "TBCGA7004",
+            "curr_package": "TBCGA7005",
+            "prev_time": "2025-06-14 11:32:47",
+            "curr_time": "2025-06-14 11:34:21"
+          },
+          {
+            "gap_seconds": 82.0,
+            "prev_package": "TBCGA7005",
+            "curr_package": "TBCGA7006",
+            "prev_time": "2025-06-14 11:34:21",
+            "curr_time": "2025-06-14 11:35:43"
+          },
+          {
+            "gap_seconds": 96.0,
+            "prev_package": "TBCGA7008",
+            "curr_package": "TBCGA7009",
+            "prev_time": "2025-06-14 11:40:49",
+            "curr_time": "2025-06-14 11:42:25"
+          }
+        ],
+        "120-780s": [
+          {
+            "gap_seconds": 277.0,
+            "prev_package": "TBCGA7007",
+            "curr_package": "TBCGA7008",
+            "prev_time": "2025-06-14 11:36:12",
+            "curr_time": "2025-06-14 11:40:49"
+          }
+        ]
+      },
+      "avg_gap": 76.4,
+      "max_gap": 277.0,
+      "min_gap": 24.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA7000",
+          "location": "GA7",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:38",
+          "induct_time_str": "2025-06-14 11:30:38"
+        },
+        {
+          "tracking_id": "TBCGA7001",
+          "location": "GA7",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:31:22",
+          "induct_time_str": "2025-06-14 11:31:22"
+        },
+        {
+          "tracking_id": "TBCGA7002",
+          "location": "GA7",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:31:56",
+          "induct_time_str": "2025-06-14 11:31:56"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 44.0,
+          "prev_package": "TBCGA7000",
+          "curr_package": "TBCGA7001",
+          "prev_time": "2025-06-14 11:30:38",
+          "curr_time": "2025-06-14 11:31:22"
+        },
+        {
+          "gap_seconds": 34.0,
+          "prev_package": "TBCGA7001",
+          "curr_package": "TBCGA7002",
+          "prev_time": "2025-06-14 11:31:22",
+          "curr_time": "2025-06-14 11:31:56"
+        },
+        {
+          "gap_seconds": 24.0,
+          "prev_package": "TBCGA7002",
+          "curr_package": "TBCGA7003",
+          "prev_time": "2025-06-14 11:31:56",
+          "curr_time": "2025-06-14 11:32:20"
+        }
+      ]
+    },
+    "GA6": {
+      "total_packages": 10,
+      "total_gaps": 9,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 25.0,
+            "prev_package": "TBCGA6001",
+            "curr_package": "TBCGA6002",
+            "prev_time": "2025-06-14 11:32:30",
+            "curr_time": "2025-06-14 11:32:55"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA6004",
+            "curr_package": "TBCGA6005",
+            "prev_time": "2025-06-14 11:35:36",
+            "curr_time": "2025-06-14 11:36:03"
+          },
+          {
+            "gap_seconds": 43.0,
+            "prev_package": "TBCGA6005",
+            "curr_package": "TBCGA6006",
+            "prev_time": "2025-06-14 11:36:03",
+            "curr_time": "2025-06-14 11:36:46"
+          },
+          {
+            "gap_seconds": 48.0,
+            "prev_package": "TBCGA6008",
+            "curr_package": "TBCGA6009",
+            "prev_time": "2025-06-14 11:39:23",
+            "curr_time": "2025-06-14 11:40:11"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 109.0,
+            "prev_package": "TBCGA6000",
+            "curr_package": "TBCGA6001",
+            "prev_time": "2025-06-14 11:30:41",
+            "curr_time": "2025-06-14 11:32:30"
+          },
+          {
+            "gap_seconds": 86.0,
+            "prev_package": "TBCGA6002",
+            "curr_package": "TBCGA6003",
+            "prev_time": "2025-06-14 11:32:55",
+            "curr_time": "2025-06-14 11:34:21"
+          },
+          {
+            "gap_seconds": 75.0,
+            "prev_package": "TBCGA6003",
+            "curr_package": "TBCGA6004",
+            "prev_time": "2025-06-14 11:34:21",
+            "curr_time": "2025-06-14 11:35:36"
+          },
+          {
+            "gap_seconds": 72.0,
+            "prev_package": "TBCGA6006",
+            "curr_package": "TBCGA6007",
+            "prev_time": "2025-06-14 11:36:46",
+            "curr_time": "2025-06-14 11:37:58"
+          },
+          {
+            "gap_seconds": 85.0,
+            "prev_package": "TBCGA6007",
+            "curr_package": "TBCGA6008",
+            "prev_time": "2025-06-14 11:37:58",
+            "curr_time": "2025-06-14 11:39:23"
+          }
+        ],
+        "120-780s": []
+      },
+      "avg_gap": 63.333333333333336,
+      "max_gap": 109.0,
+      "min_gap": 25.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA6000",
+          "location": "GA6",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:41",
+          "induct_time_str": "2025-06-14 11:30:41"
+        },
+        {
+          "tracking_id": "TBCGA6001",
+          "location": "GA6",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:30",
+          "induct_time_str": "2025-06-14 11:32:30"
+        },
+        {
+          "tracking_id": "TBCGA6002",
+          "location": "GA6",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:55",
+          "induct_time_str": "2025-06-14 11:32:55"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 109.0,
+          "prev_package": "TBCGA6000",
+          "curr_package": "TBCGA6001",
+          "prev_time": "2025-06-14 11:30:41",
+          "curr_time": "2025-06-14 11:32:30"
+        },
+        {
+          "gap_seconds": 25.0,
+          "prev_package": "TBCGA6001",
+          "curr_package": "TBCGA6002",
+          "prev_time": "2025-06-14 11:32:30",
+          "curr_time": "2025-06-14 11:32:55"
+        },
+        {
+          "gap_seconds": 86.0,
+          "prev_package": "TBCGA6002",
+          "curr_package": "TBCGA6003",
+          "prev_time": "2025-06-14 11:32:55",
+          "curr_time": "2025-06-14 11:34:21"
+        }
+      ]
+    },
+    "GA5": {
+      "total_packages": 19,
+      "total_gaps": 18,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 49.0,
+            "prev_package": "TBCGA5003",
+            "curr_package": "TBCGA5004",
+            "prev_time": "2025-06-14 11:35:32",
+            "curr_time": "2025-06-14 11:36:21"
+          },
+          {
+            "gap_seconds": 28.0,
+            "prev_package": "TBCGA5004",
+            "curr_package": "TBCGA5005",
+            "prev_time": "2025-06-14 11:36:21",
+            "curr_time": "2025-06-14 11:36:49"
+          },
+          {
+            "gap_seconds": 33.0,
+            "prev_package": "TBCGA5005",
+            "curr_package": "TBCGA5006",
+            "prev_time": "2025-06-14 11:36:49",
+            "curr_time": "2025-06-14 11:37:22"
+          },
+          {
+            "gap_seconds": 31.0,
+            "prev_package": "TBCGA5006",
+            "curr_package": "TBCGA5007",
+            "prev_time": "2025-06-14 11:37:22",
+            "curr_time": "2025-06-14 11:37:53"
+          },
+          {
+            "gap_seconds": 53.0,
+            "prev_package": "TBCGA5007",
+            "curr_package": "TBCGA5008",
+            "prev_time": "2025-06-14 11:37:53",
+            "curr_time": "2025-06-14 11:38:46"
+          },
+          {
+            "gap_seconds": 57.0,
+            "prev_package": "TBCGA5008",
+            "curr_package": "TBCGA5009",
+            "prev_time": "2025-06-14 11:38:46",
+            "curr_time": "2025-06-14 11:39:43"
+          },
+          {
+            "gap_seconds": 45.0,
+            "prev_package": "TBCGA5009",
+            "curr_package": "TBCGA5010",
+            "prev_time": "2025-06-14 11:39:43",
+            "curr_time": "2025-06-14 11:40:28"
+          },
+          {
+            "gap_seconds": 36.0,
+            "prev_package": "TBCGA5010",
+            "curr_package": "TBCGA5011",
+            "prev_time": "2025-06-14 11:40:28",
+            "curr_time": "2025-06-14 11:41:04"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA5011",
+            "curr_package": "TBCGA5012",
+            "prev_time": "2025-06-14 11:41:04",
+            "curr_time": "2025-06-14 11:41:31"
+          },
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBCGA5013",
+            "curr_package": "TBCGA5014",
+            "prev_time": "2025-06-14 11:42:38",
+            "curr_time": "2025-06-14 11:43:22"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA5014",
+            "curr_package": "TBCGA5015",
+            "prev_time": "2025-06-14 11:43:22",
+            "curr_time": "2025-06-14 11:43:49"
+          },
+          {
+            "gap_seconds": 48.0,
+            "prev_package": "TBCGA5016",
+            "curr_package": "TBCGA5017",
+            "prev_time": "2025-06-14 11:44:58",
+            "curr_time": "2025-06-14 11:45:46"
+          },
+          {
+            "gap_seconds": 33.0,
+            "prev_package": "TBCGA5017",
+            "curr_package": "TBCGA5018",
+            "prev_time": "2025-06-14 11:45:46",
+            "curr_time": "2025-06-14 11:46:19"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 88.0,
+            "prev_package": "TBCGA5000",
+            "curr_package": "TBCGA5001",
+            "prev_time": "2025-06-14 11:30:47",
+            "curr_time": "2025-06-14 11:32:15"
+          },
+          {
+            "gap_seconds": 83.0,
+            "prev_package": "TBCGA5001",
+            "curr_package": "TBCGA5002",
+            "prev_time": "2025-06-14 11:32:15",
+            "curr_time": "2025-06-14 11:33:38"
+          },
+          {
+            "gap_seconds": 114.0,
+            "prev_package": "TBCGA5002",
+            "curr_package": "TBCGA5003",
+            "prev_time": "2025-06-14 11:33:38",
+            "curr_time": "2025-06-14 11:35:32"
+          },
+          {
+            "gap_seconds": 67.0,
+            "prev_package": "TBCGA5012",
+            "curr_package": "TBCGA5013",
+            "prev_time": "2025-06-14 11:41:31",
+            "curr_time": "2025-06-14 11:42:38"
+          },
+          {
+            "gap_seconds": 69.0,
+            "prev_package": "TBCGA5015",
+            "curr_package": "TBCGA5016",
+            "prev_time": "2025-06-14 11:43:49",
+            "curr_time": "2025-06-14 11:44:58"
+          }
+        ],
+        "120-780s": []
+      },
+      "avg_gap": 51.77777777777778,
+      "max_gap": 114.0,
+      "min_gap": 27.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA5000",
+          "location": "GA5",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:47",
+          "induct_time_str": "2025-06-14 11:30:47"
+        },
+        {
+          "tracking_id": "TBCGA5001",
+          "location": "GA5",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:15",
+          "induct_time_str": "2025-06-14 11:32:15"
+        },
+        {
+          "tracking_id": "TBCGA5002",
+          "location": "GA5",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:33:38",
+          "induct_time_str": "2025-06-14 11:33:38"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 88.0,
+          "prev_package": "TBCGA5000",
+          "curr_package": "TBCGA5001",
+          "prev_time": "2025-06-14 11:30:47",
+          "curr_time": "2025-06-14 11:32:15"
+        },
+        {
+          "gap_seconds": 83.0,
+          "prev_package": "TBCGA5001",
+          "curr_package": "TBCGA5002",
+          "prev_time": "2025-06-14 11:32:15",
+          "curr_time": "2025-06-14 11:33:38"
+        },
+        {
+          "gap_seconds": 114.0,
+          "prev_package": "TBCGA5002",
+          "curr_package": "TBCGA5003",
+          "prev_time": "2025-06-14 11:33:38",
+          "curr_time": "2025-06-14 11:35:32"
+        }
+      ]
+    },
+    "GA3": {
+      "total_packages": 20,
+      "total_gaps": 19,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 38.0,
+            "prev_package": "TBCGA3000",
+            "curr_package": "TBCGA3001",
+            "prev_time": "2025-06-14 11:30:52",
+            "curr_time": "2025-06-14 11:31:30"
+          },
+          {
+            "gap_seconds": 54.0,
+            "prev_package": "TBCGA3002",
+            "curr_package": "TBCGA3003",
+            "prev_time": "2025-06-14 11:34:31",
+            "curr_time": "2025-06-14 11:35:25"
+          },
+          {
+            "gap_seconds": 47.0,
+            "prev_package": "TBCGA3003",
+            "curr_package": "TBCGA3004",
+            "prev_time": "2025-06-14 11:35:25",
+            "curr_time": "2025-06-14 11:36:12"
+          },
+          {
+            "gap_seconds": 50.0,
+            "prev_package": "TBCGA3004",
+            "curr_package": "TBCGA3005",
+            "prev_time": "2025-06-14 11:36:12",
+            "curr_time": "2025-06-14 11:37:02"
+          },
+          {
+            "gap_seconds": 58.0,
+            "prev_package": "TBCGA3005",
+            "curr_package": "TBCGA3006",
+            "prev_time": "2025-06-14 11:37:02",
+            "curr_time": "2025-06-14 11:38:00"
+          },
+          {
+            "gap_seconds": 40.0,
+            "prev_package": "TBCGA3006",
+            "curr_package": "TBCGA3007",
+            "prev_time": "2025-06-14 11:38:00",
+            "curr_time": "2025-06-14 11:38:40"
+          },
+          {
+            "gap_seconds": 41.0,
+            "prev_package": "TBCGA3008",
+            "curr_package": "TBCGA3009",
+            "prev_time": "2025-06-14 11:40:29",
+            "curr_time": "2025-06-14 11:41:10"
+          },
+          {
+            "gap_seconds": 53.0,
+            "prev_package": "TBCGA3009",
+            "curr_package": "TBCGA3010",
+            "prev_time": "2025-06-14 11:41:10",
+            "curr_time": "2025-06-14 11:42:03"
+          },
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBCGA3010",
+            "curr_package": "TBCGA3011",
+            "prev_time": "2025-06-14 11:42:03",
+            "curr_time": "2025-06-14 11:42:47"
+          },
+          {
+            "gap_seconds": 42.0,
+            "prev_package": "TBCGA3011",
+            "curr_package": "TBCGA3012",
+            "prev_time": "2025-06-14 11:42:47",
+            "curr_time": "2025-06-14 11:43:29"
+          },
+          {
+            "gap_seconds": 51.0,
+            "prev_package": "TBCGA3012",
+            "curr_package": "TBCGA3013",
+            "prev_time": "2025-06-14 11:43:29",
+            "curr_time": "2025-06-14 11:44:20"
+          },
+          {
+            "gap_seconds": 57.0,
+            "prev_package": "TBCGA3013",
+            "curr_package": "TBCGA3014",
+            "prev_time": "2025-06-14 11:44:20",
+            "curr_time": "2025-06-14 11:45:17"
+          },
+          {
+            "gap_seconds": 42.0,
+            "prev_package": "TBCGA3014",
+            "curr_package": "TBCGA3015",
+            "prev_time": "2025-06-14 11:45:17",
+            "curr_time": "2025-06-14 11:45:59"
+          },
+          {
+            "gap_seconds": 55.0,
+            "prev_package": "TBCGA3016",
+            "curr_package": "TBCGA3017",
+            "prev_time": "2025-06-14 11:47:31",
+            "curr_time": "2025-06-14 11:48:26"
+          },
+          {
+            "gap_seconds": 56.0,
+            "prev_package": "TBCGA3017",
+            "curr_package": "TBCGA3018",
+            "prev_time": "2025-06-14 11:48:26",
+            "curr_time": "2025-06-14 11:49:22"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 109.0,
+            "prev_package": "TBCGA3007",
+            "curr_package": "TBCGA3008",
+            "prev_time": "2025-06-14 11:38:40",
+            "curr_time": "2025-06-14 11:40:29"
+          },
+          {
+            "gap_seconds": 92.0,
+            "prev_package": "TBCGA3015",
+            "curr_package": "TBCGA3016",
+            "prev_time": "2025-06-14 11:45:59",
+            "curr_time": "2025-06-14 11:47:31"
+          },
+          {
+            "gap_seconds": 94.0,
+            "prev_package": "TBCGA3018",
+            "curr_package": "TBCGA3019",
+            "prev_time": "2025-06-14 11:49:22",
+            "curr_time": "2025-06-14 11:50:56"
+          }
+        ],
+        "120-780s": [
+          {
+            "gap_seconds": 181.0,
+            "prev_package": "TBCGA3001",
+            "curr_package": "TBCGA3002",
+            "prev_time": "2025-06-14 11:31:30",
+            "curr_time": "2025-06-14 11:34:31"
+          }
+        ]
+      },
+      "avg_gap": 63.36842105263158,
+      "max_gap": 181.0,
+      "min_gap": 38.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA3000",
+          "location": "GA3",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:52",
+          "induct_time_str": "2025-06-14 11:30:52"
+        },
+        {
+          "tracking_id": "TBCGA3001",
+          "location": "GA3",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:31:30",
+          "induct_time_str": "2025-06-14 11:31:30"
+        },
+        {
+          "tracking_id": "TBCGA3002",
+          "location": "GA3",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:34:31",
+          "induct_time_str": "2025-06-14 11:34:31"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 38.0,
+          "prev_package": "TBCGA3000",
+          "curr_package": "TBCGA3001",
+          "prev_time": "2025-06-14 11:30:52",
+          "curr_time": "2025-06-14 11:31:30"
+        },
+        {
+          "gap_seconds": 181.0,
+          "prev_package": "TBCGA3001",
+          "curr_package": "TBCGA3002",
+          "prev_time": "2025-06-14 11:31:30",
+          "curr_time": "2025-06-14 11:34:31"
+        },
+        {
+          "gap_seconds": 54.0,
+          "prev_package": "TBCGA3002",
+          "curr_package": "TBCGA3003",
+          "prev_time": "2025-06-14 11:34:31",
+          "curr_time": "2025-06-14 11:35:25"
+        }
+      ]
+    },
+    "GA4": {
+      "total_packages": 23,
+      "total_gaps": 22,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 46.0,
+            "prev_package": "TBCGA4002",
+            "curr_package": "TBCGA4003",
+            "prev_time": "2025-06-14 11:33:48",
+            "curr_time": "2025-06-14 11:34:34"
+          },
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBCGA4003",
+            "curr_package": "TBCGA4004",
+            "prev_time": "2025-06-14 11:34:34",
+            "curr_time": "2025-06-14 11:35:18"
+          },
+          {
+            "gap_seconds": 58.0,
+            "prev_package": "TBCGA4005",
+            "curr_package": "TBCGA4006",
+            "prev_time": "2025-06-14 11:37:12",
+            "curr_time": "2025-06-14 11:38:10"
+          },
+          {
+            "gap_seconds": 25.0,
+            "prev_package": "TBCGA4006",
+            "curr_package": "TBCGA4007",
+            "prev_time": "2025-06-14 11:38:10",
+            "curr_time": "2025-06-14 11:38:35"
+          },
+          {
+            "gap_seconds": 41.0,
+            "prev_package": "TBCGA4009",
+            "curr_package": "TBCGA4010",
+            "prev_time": "2025-06-14 11:41:39",
+            "curr_time": "2025-06-14 11:42:20"
+          },
+          {
+            "gap_seconds": 48.0,
+            "prev_package": "TBCGA4010",
+            "curr_package": "TBCGA4011",
+            "prev_time": "2025-06-14 11:42:20",
+            "curr_time": "2025-06-14 11:43:08"
+          },
+          {
+            "gap_seconds": 56.0,
+            "prev_package": "TBCGA4014",
+            "curr_package": "TBCGA4015",
+            "prev_time": "2025-06-14 11:51:11",
+            "curr_time": "2025-06-14 11:52:07"
+          },
+          {
+            "gap_seconds": 24.0,
+            "prev_package": "TBCGA4015",
+            "curr_package": "TBCGA4016",
+            "prev_time": "2025-06-14 11:52:07",
+            "curr_time": "2025-06-14 11:52:31"
+          },
+          {
+            "gap_seconds": 38.0,
+            "prev_package": "TBCGA4016",
+            "curr_package": "TBCGA4017",
+            "prev_time": "2025-06-14 11:52:31",
+            "curr_time": "2025-06-14 11:53:09"
+          },
+          {
+            "gap_seconds": 53.0,
+            "prev_package": "TBCGA4018",
+            "curr_package": "TBCGA4019",
+            "prev_time": "2025-06-14 11:54:32",
+            "curr_time": "2025-06-14 11:55:25"
+          },
+          {
+            "gap_seconds": 51.0,
+            "prev_package": "TBCGA4020",
+            "curr_package": "TBCGA4021",
+            "prev_time": "2025-06-14 11:56:45",
+            "curr_time": "2025-06-14 11:57:36"
+          },
+          {
+            "gap_seconds": 58.0,
+            "prev_package": "TBCGA4021",
+            "curr_package": "TBCGA4022",
+            "prev_time": "2025-06-14 11:57:36",
+            "curr_time": "2025-06-14 11:58:34"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 104.0,
+            "prev_package": "TBCGA4000",
+            "curr_package": "TBCGA4001",
+            "prev_time": "2025-06-14 11:30:55",
+            "curr_time": "2025-06-14 11:32:39"
+          },
+          {
+            "gap_seconds": 69.0,
+            "prev_package": "TBCGA4001",
+            "curr_package": "TBCGA4002",
+            "prev_time": "2025-06-14 11:32:39",
+            "curr_time": "2025-06-14 11:33:48"
+          },
+          {
+            "gap_seconds": 114.0,
+            "prev_package": "TBCGA4004",
+            "curr_package": "TBCGA4005",
+            "prev_time": "2025-06-14 11:35:18",
+            "curr_time": "2025-06-14 11:37:12"
+          },
+          {
+            "gap_seconds": 74.0,
+            "prev_package": "TBCGA4007",
+            "curr_package": "TBCGA4008",
+            "prev_time": "2025-06-14 11:38:35",
+            "curr_time": "2025-06-14 11:39:49"
+          },
+          {
+            "gap_seconds": 110.0,
+            "prev_package": "TBCGA4008",
+            "curr_package": "TBCGA4009",
+            "prev_time": "2025-06-14 11:39:49",
+            "curr_time": "2025-06-14 11:41:39"
+          },
+          {
+            "gap_seconds": 76.0,
+            "prev_package": "TBCGA4012",
+            "curr_package": "TBCGA4013",
+            "prev_time": "2025-06-14 11:46:21",
+            "curr_time": "2025-06-14 11:47:37"
+          },
+          {
+            "gap_seconds": 83.0,
+            "prev_package": "TBCGA4017",
+            "curr_package": "TBCGA4018",
+            "prev_time": "2025-06-14 11:53:09",
+            "curr_time": "2025-06-14 11:54:32"
+          },
+          {
+            "gap_seconds": 80.0,
+            "prev_package": "TBCGA4019",
+            "curr_package": "TBCGA4020",
+            "prev_time": "2025-06-14 11:55:25",
+            "curr_time": "2025-06-14 11:56:45"
+          }
+        ],
+        "120-780s": [
+          {
+            "gap_seconds": 193.0,
+            "prev_package": "TBCGA4011",
+            "curr_package": "TBCGA4012",
+            "prev_time": "2025-06-14 11:43:08",
+            "curr_time": "2025-06-14 11:46:21"
+          },
+          {
+            "gap_seconds": 214.0,
+            "prev_package": "TBCGA4013",
+            "curr_package": "TBCGA4014",
+            "prev_time": "2025-06-14 11:47:37",
+            "curr_time": "2025-06-14 11:51:11"
+          }
+        ]
+      },
+      "avg_gap": 75.4090909090909,
+      "max_gap": 214.0,
+      "min_gap": 24.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA4000",
+          "location": "GA4",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:30:55",
+          "induct_time_str": "2025-06-14 11:30:55"
+        },
+        {
+          "tracking_id": "TBCGA4001",
+          "location": "GA4",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:39",
+          "induct_time_str": "2025-06-14 11:32:39"
+        },
+        {
+          "tracking_id": "TBCGA4002",
+          "location": "GA4",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:33:48",
+          "induct_time_str": "2025-06-14 11:33:48"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 104.0,
+          "prev_package": "TBCGA4000",
+          "curr_package": "TBCGA4001",
+          "prev_time": "2025-06-14 11:30:55",
+          "curr_time": "2025-06-14 11:32:39"
+        },
+        {
+          "gap_seconds": 69.0,
+          "prev_package": "TBCGA4001",
+          "curr_package": "TBCGA4002",
+          "prev_time": "2025-06-14 11:32:39",
+          "curr_time": "2025-06-14 11:33:48"
+        },
+        {
+          "gap_seconds": 46.0,
+          "prev_package": "TBCGA4002",
+          "curr_package": "TBCGA4003",
+          "prev_time": "2025-06-14 11:33:48",
+          "curr_time": "2025-06-14 11:34:34"
+        }
+      ]
+    },
+    "GA9": {
+      "total_packages": 18,
+      "total_gaps": 17,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 44.0,
+            "prev_package": "TBCGA9000",
+            "curr_package": "TBCGA9001",
+            "prev_time": "2025-06-14 11:31:16",
+            "curr_time": "2025-06-14 11:32:00"
+          },
+          {
+            "gap_seconds": 46.0,
+            "prev_package": "TBCGA9001",
+            "curr_package": "TBCGA9002",
+            "prev_time": "2025-06-14 11:32:00",
+            "curr_time": "2025-06-14 11:32:46"
+          },
+          {
+            "gap_seconds": 54.0,
+            "prev_package": "TBCGA9003",
+            "curr_package": "TBCGA9004",
+            "prev_time": "2025-06-14 11:34:09",
+            "curr_time": "2025-06-14 11:35:03"
+          },
+          {
+            "gap_seconds": 54.0,
+            "prev_package": "TBCGA9004",
+            "curr_package": "TBCGA9005",
+            "prev_time": "2025-06-14 11:35:03",
+            "curr_time": "2025-06-14 11:35:57"
+          },
+          {
+            "gap_seconds": 55.0,
+            "prev_package": "TBCGA9006",
+            "curr_package": "TBCGA9007",
+            "prev_time": "2025-06-14 11:38:12",
+            "curr_time": "2025-06-14 11:39:07"
+          },
+          {
+            "gap_seconds": 48.0,
+            "prev_package": "TBCGA9007",
+            "curr_package": "TBCGA9008",
+            "prev_time": "2025-06-14 11:39:07",
+            "curr_time": "2025-06-14 11:39:55"
+          },
+          {
+            "gap_seconds": 33.0,
+            "prev_package": "TBCGA9008",
+            "curr_package": "TBCGA9009",
+            "prev_time": "2025-06-14 11:39:55",
+            "curr_time": "2025-06-14 11:40:28"
+          },
+          {
+            "gap_seconds": 46.0,
+            "prev_package": "TBCGA9009",
+            "curr_package": "TBCGA9010",
+            "prev_time": "2025-06-14 11:40:28",
+            "curr_time": "2025-06-14 11:41:14"
+          },
+          {
+            "gap_seconds": 33.0,
+            "prev_package": "TBCGA9010",
+            "curr_package": "TBCGA9011",
+            "prev_time": "2025-06-14 11:41:14",
+            "curr_time": "2025-06-14 11:41:47"
+          },
+          {
+            "gap_seconds": 36.0,
+            "prev_package": "TBCGA9011",
+            "curr_package": "TBCGA9012",
+            "prev_time": "2025-06-14 11:41:47",
+            "curr_time": "2025-06-14 11:42:23"
+          },
+          {
+            "gap_seconds": 27.0,
+            "prev_package": "TBCGA9012",
+            "curr_package": "TBCGA9013",
+            "prev_time": "2025-06-14 11:42:23",
+            "curr_time": "2025-06-14 11:42:50"
+          },
+          {
+            "gap_seconds": 55.0,
+            "prev_package": "TBCGA9014",
+            "curr_package": "TBCGA9015",
+            "prev_time": "2025-06-14 11:47:38",
+            "curr_time": "2025-06-14 11:48:33"
+          },
+          {
+            "gap_seconds": 22.0,
+            "prev_package": "TBCGA9016",
+            "curr_package": "TBCGA9017",
+            "prev_time": "2025-06-14 11:49:47",
+            "curr_time": "2025-06-14 11:50:09"
+          }
+        ],
+        "60-120s": [
+          {
+            "gap_seconds": 83.0,
+            "prev_package": "TBCGA9002",
+            "curr_package": "TBCGA9003",
+            "prev_time": "2025-06-14 11:32:46",
+            "curr_time": "2025-06-14 11:34:09"
+          },
+          {
+            "gap_seconds": 74.0,
+            "prev_package": "TBCGA9015",
+            "curr_package": "TBCGA9016",
+            "prev_time": "2025-06-14 11:48:33",
+            "curr_time": "2025-06-14 11:49:47"
+          }
+        ],
+        "120-780s": [
+          {
+            "gap_seconds": 135.0,
+            "prev_package": "TBCGA9005",
+            "curr_package": "TBCGA9006",
+            "prev_time": "2025-06-14 11:35:57",
+            "curr_time": "2025-06-14 11:38:12"
+          },
+          {
+            "gap_seconds": 288.0,
+            "prev_package": "TBCGA9013",
+            "curr_package": "TBCGA9014",
+            "prev_time": "2025-06-14 11:42:50",
+            "curr_time": "2025-06-14 11:47:38"
+          }
+        ]
+      },
+      "avg_gap": 66.6470588235294,
+      "max_gap": 288.0,
+      "min_gap": 22.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA9000",
+          "location": "GA9",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:31:16",
+          "induct_time_str": "2025-06-14 11:31:16"
+        },
+        {
+          "tracking_id": "TBCGA9001",
+          "location": "GA9",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:00",
+          "induct_time_str": "2025-06-14 11:32:00"
+        },
+        {
+          "tracking_id": "TBCGA9002",
+          "location": "GA9",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:32:46",
+          "induct_time_str": "2025-06-14 11:32:46"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 44.0,
+          "prev_package": "TBCGA9000",
+          "curr_package": "TBCGA9001",
+          "prev_time": "2025-06-14 11:31:16",
+          "curr_time": "2025-06-14 11:32:00"
+        },
+        {
+          "gap_seconds": 46.0,
+          "prev_package": "TBCGA9001",
+          "curr_package": "TBCGA9002",
+          "prev_time": "2025-06-14 11:32:00",
+          "curr_time": "2025-06-14 11:32:46"
+        },
+        {
+          "gap_seconds": 83.0,
+          "prev_package": "TBCGA9002",
+          "curr_package": "TBCGA9003",
+          "prev_time": "2025-06-14 11:32:46",
+          "curr_time": "2025-06-14 11:34:09"
+        }
+      ]
+    },
+    "GA10": {
+      "total_packages": 6,
+      "total_gaps": 5,
+      "categories": {
+        "20-60s": [
+          {
+            "gap_seconds": 39.0,
+            "prev_package": "TBCGA10000",
+            "curr_package": "TBCGA10001",
+            "prev_time": "2025-06-14 11:34:35",
+            "curr_time": "2025-06-14 11:35:14"
+          },
+          {
+            "gap_seconds": 24.0,
+            "prev_package": "TBCGA10001",
+            "curr_package": "TBCGA10002",
+            "prev_time": "2025-06-14 11:35:14",
+            "curr_time": "2025-06-14 11:35:38"
+          },
+          {
+            "gap_seconds": 36.0,
+            "prev_package": "TBCGA10002",
+            "curr_package": "TBCGA10003",
+            "prev_time": "2025-06-14 11:35:38",
+            "curr_time": "2025-06-14 11:36:14"
+          },
+          {
+            "gap_seconds": 30.0,
+            "prev_package": "TBCGA10003",
+            "curr_package": "TBCGA10004",
+            "prev_time": "2025-06-14 11:36:14",
+            "curr_time": "2025-06-14 11:36:44"
+          },
+          {
+            "gap_seconds": 47.0,
+            "prev_package": "TBCGA10004",
+            "curr_package": "TBCGA10005",
+            "prev_time": "2025-06-14 11:36:44",
+            "curr_time": "2025-06-14 11:37:31"
+          }
+        ],
+        "60-120s": [],
+        "120-780s": []
+      },
+      "avg_gap": 35.2,
+      "max_gap": 47.0,
+      "min_gap": 24.0,
+      "sample_records": [
+        {
+          "tracking_id": "TBCGA10000",
+          "location": "GA10",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:34:35",
+          "induct_time_str": "2025-06-14 11:34:35"
+        },
+        {
+          "tracking_id": "TBCGA10001",
+          "location": "GA10",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:35:14",
+          "induct_time_str": "2025-06-14 11:35:14"
+        },
+        {
+          "tracking_id": "TBCGA10002",
+          "location": "GA10",
+          "status": "INDUCTED",
+          "induct_timestamp": "2025-06-14 11:35:38",
+          "induct_time_str": "2025-06-14 11:35:38"
+        }
+      ],
+      "sample_downtimes": [
+        {
+          "gap_seconds": 39.0,
+          "prev_package": "TBCGA10000",
+          "curr_package": "TBCGA10001",
+          "prev_time": "2025-06-14 11:34:35",
+          "curr_time": "2025-06-14 11:35:14"
+        },
+        {
+          "gap_seconds": 24.0,
+          "prev_package": "TBCGA10001",
+          "curr_package": "TBCGA10002",
+          "prev_time": "2025-06-14 11:35:14",
+          "curr_time": "2025-06-14 11:35:38"
+        },
+        {
+          "gap_seconds": 36.0,
+          "prev_package": "TBCGA10002",
+          "curr_package": "TBCGA10003",
+          "prev_time": "2025-06-14 11:35:38",
+          "curr_time": "2025-06-14 11:36:14"
+        }
+      ]
+    }
+  },
+  "total_records": 149,
+  "sample_records": [
+    {
+      "tracking_id": "TBCGA1000",
+      "location": "GA1",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:22",
+      "induct_time_str": "2025-06-14 11:30:22"
+    },
+    {
+      "tracking_id": "TBCGA2000",
+      "location": "GA2",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:26",
+      "induct_time_str": "2025-06-14 11:30:26"
+    },
+    {
+      "tracking_id": "TBCGA8000",
+      "location": "GA8",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:33",
+      "induct_time_str": "2025-06-14 11:30:33"
+    },
+    {
+      "tracking_id": "TBCGA7000",
+      "location": "GA7",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:38",
+      "induct_time_str": "2025-06-14 11:30:38"
+    },
+    {
+      "tracking_id": "TBCGA6000",
+      "location": "GA6",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:41",
+      "induct_time_str": "2025-06-14 11:30:41"
+    },
+    {
+      "tracking_id": "TBCGA5000",
+      "location": "GA5",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:47",
+      "induct_time_str": "2025-06-14 11:30:47"
+    },
+    {
+      "tracking_id": "TBCGA3000",
+      "location": "GA3",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:52",
+      "induct_time_str": "2025-06-14 11:30:52"
+    },
+    {
+      "tracking_id": "TBCGA4000",
+      "location": "GA4",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:55",
+      "induct_time_str": "2025-06-14 11:30:55"
+    },
+    {
+      "tracking_id": "TBCGA1001",
+      "location": "GA1",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:30:58",
+      "induct_time_str": "2025-06-14 11:30:58"
+    },
+    {
+      "tracking_id": "TBCGA2001",
+      "location": "GA2",
+      "status": "INDUCTED",
+      "induct_timestamp": "2025-06-14 11:31:09",
+      "induct_time_str": "2025-06-14 11:31:09"
+    }
+  ],
+  "simulation_notes": "Generated sample data for testing downtime calculation logic"
+}

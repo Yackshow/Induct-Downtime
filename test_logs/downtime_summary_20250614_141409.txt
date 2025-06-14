@@ -1,0 +1,11 @@
+Downtime Analysis Simulation - 20250614_141409
+============================================================
+
+Total packages: 149
+Total gaps: 139
+Locations: GA1, GA10, GA2, GA3, GA4, GA5, GA6, GA7, GA8, GA9
+
+Downtime Categories:
+  20-60s: 96 gaps (avg: 41.8s)
+  60-120s: 36 gaps (avg: 86.1s)
+  120-780s: 7 gaps (avg: 226.9s)

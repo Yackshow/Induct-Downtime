@@ -1,0 +1,100 @@
+{
+  "timestamp": "20250614_141857",
+  "standard_packages": {
+    "count": 682,
+    "location_breakdown": {
+      "GA1": 682
+    },
+    "status_breakdown": {
+      "READY_FOR_DEPARTURE": 680,
+      "AT_STATION": 2
+    },
+    "sample_packages": [
+      {
+        "status": "READY_FOR_DEPARTURE",
+        "tracking_id": "TBC498144451009",
+        "location": "GA1",
+        "timestamp": "2025-06-14 11:57:08",
+        "raw_timestamp": "2025-06-14T11:57:08Z",
+        "scraped_at": "2025-06-14T14:18:59.899812"
+      },
+      {
+        "status": "READY_FOR_DEPARTURE",
+        "tracking_id": "TBC498071647009",
+        "location": "GA1",
+        "timestamp": "2025-06-14 11:56:59",
+        "raw_timestamp": "2025-06-14T11:56:59Z",
+        "scraped_at": "2025-06-14T14:18:59.899980"
+      },
+      {
+        "status": "READY_FOR_DEPARTURE",
+        "tracking_id": "TBC498130020009",
+        "location": "GA1",
+        "timestamp": "2025-06-14 11:56:55",
+        "raw_timestamp": "2025-06-14T11:56:55Z",
+        "scraped_at": "2025-06-14T14:18:59.900068"
+      },
+      {
+        "status": "READY_FOR_DEPARTURE",
+        "tracking_id": "TBC498140688009",
+        "location": "GA1",
+        "timestamp": "2025-06-14 11:56:53",
+        "raw_timestamp": "2025-06-14T11:56:53Z",
+        "scraped_at": "2025-06-14T14:18:59.900152"
+      },
+      {
+        "status": "READY_FOR_DEPARTURE",
+        "tracking_id": "TBC498156806009",
+        "location": "GA1",
+        "timestamp": "2025-06-14 11:56:51",
+        "raw_timestamp": "2025-06-14T11:56:51Z",
+        "scraped_at": "2025-06-14T14:18:59.900222"
+      }
+    ]
+  },
+  "induct_records": {
+    "count": 1026,
+    "sample_records": [
+      {
+        "tracking_id": "TIMESTAMP_0306",
+        "location": "GA7",
+        "induct_timestamp": "2025-06-13 14:30:00",
+        "induct_time_str": "2025-06-13T14:30:00",
+        "source": "general_pattern"
+      },
+      {
+        "tracking_id": "TIMESTAMP_0536",
+        "location": "GA7",
+        "induct_timestamp": "2025-06-13 17:00:00",
+        "induct_time_str": "2025-06-13T17:00:00",
+        "source": "general_pattern"
+      },
+      {
+        "tracking_id": "TIMESTAMP_1002",
+        "location": "GA3",
+        "induct_timestamp": "2025-06-13 17:30:00",
+        "induct_time_str": "2025-06-13T17:30:00",
+        "source": "general_pattern"
+      },
+      {
+        "tracking_id": "TIMESTAMP_0691",
+        "location": "GA2",
+        "induct_timestamp": "2025-06-14 01:00:00",
+        "induct_time_str": "2025-06-14T01:00:00",
+        "source": "general_pattern"
+      },
+      {
+        "tracking_id": "TIMESTAMP_0948",
+        "location": "GA9",
+        "induct_timestamp": "2025-06-14 01:30:00",
+        "induct_time_str": "2025-06-14T01:30:00",
+        "source": "general_pattern"
+      }
+    ],
+    "time_range": {
+      "min": "2025-06-13 14:30:00",
+      "max": "2025-06-14 14:03:11"
+    }
+  },
+  "downtime_analysis": {}
+}
